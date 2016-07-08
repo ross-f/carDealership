@@ -24,7 +24,7 @@ public class CarDealership implements ActionListener {
     JFrame frame;
     Container app;
     CardLayout cl;
-    Login loginPage;
+    Login login;
     Menu menu;
     Search carSeaerch;
     Search employeeSearch;
@@ -54,7 +54,6 @@ public class CarDealership implements ActionListener {
         ArrayList<SearchableObject> searchableCustomers = new ArrayList<>();
         customers.forEach( (customer) -> searchableCustomers.add(customer.getBasicObject()));
 
-
         frame = new JFrame("CarSales");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500,500);
@@ -65,23 +64,27 @@ public class CarDealership implements ActionListener {
         app.setLayout(cl);
 
         // TODO - Next three sections could be functionalized
-        loginPage = new Login(employees);
+        login = new Login(employees);
         menu = new Menu(employees);
         carSeaerch = new Search(searchableCars);
         employeeSearch = new Search(searchableEmployees);
         customerSearch = new Search(searchableCustomers);
 
-        app.add(loginPage, "login");
+        app.add(login, "login");
         app.add(menu, "menu");
         app.add(carSeaerch, "car");
         app.add(employeeSearch, "employee");
         app.add(customerSearch, "customer");
 
-        loginPage.login.addActionListener(this);
+        // TODO - don't pass this through when your still building it
+        login.login.addActionListener(this);
         menu.cars.addActionListener(this);
         menu.customers.addActionListener(this);
         menu.staff.addActionListener(this);
         menu.exit.addActionListener(this);
+        carSeaerch.backToMenu.addActionListener(this);
+        employeeSearch.backToMenu.addActionListener(this);
+        customerSearch.backToMenu.addActionListener(this);
         
         frame.pack();
         frame.setVisible(true);
@@ -99,7 +102,7 @@ public class CarDealership implements ActionListener {
         
         switch(ae.getActionCommand()){
             case("Login"):{
-                if (loginPage.done)
+                if (login.done)
                     cl.show(app, "menu");
                 break;
             }
@@ -121,12 +124,13 @@ public class CarDealership implements ActionListener {
         
             case("Logout"):{
                 cl.show(app, "login");
+                login.clearLoginFields();
                 break;
             }
             
             case("←"):{
                 cl.show(app, "menu");
-//                break;
+                break;
             }
                 
             default:

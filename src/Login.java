@@ -174,6 +174,11 @@ public class Login extends javax.swing.JPanel {
         else showWarning();
     }//GEN-LAST:event_loginActionPerformed
 
+    public void clearLoginFields(){
+        passwordField.setText("");
+        usernameField.setText("");
+    }
+    
     private void showWarning(){
         message.setText("Incorrect username or password!");
     }

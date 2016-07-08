@@ -52,7 +52,6 @@ public class Search extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         backToMenu = new javax.swing.JButton();
 
-        SearchField.setText("Enter search...");
         SearchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchFieldActionPerformed(evt);
@@ -121,8 +120,10 @@ public class Search extends javax.swing.JPanel {
         // Filter the list
         results = objectToSearch
                 .stream()
-                .filter((instance) -> instance.name.contains(SearchField.getText()))
+                .filter((instance) -> 
+                        instance.name.toLowerCase().contains(SearchField.getText().toLowerCase()))
                 .collect(Collectors.toCollection(ArrayList::new));
+        
         
         resultsList = new AbstractListModel<String>() {
             @Override
@@ -135,10 +136,13 @@ public class Search extends javax.swing.JPanel {
                 return results.get(i).name;
             }
         };
+        
+        jList1.setModel(resultsList);
     }//GEN-LAST:event_SearchButtonActionPerformed
-
+    
     private void SearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFieldActionPerformed
-        // TODO add your handling code here:
+        // decoped helper text
+//        if(SearchField.getText().equals("Enter search...")) SearchField.setText("");
     }//GEN-LAST:event_SearchFieldActionPerformed
 
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
