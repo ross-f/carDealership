@@ -20,7 +20,7 @@ public class Customer extends SearchableObject {
     
     // constuctor for a customer who hasnt purchased anything yet
     public Customer(String firstName, String lastName, Date dateOfBirth, String favouriteCarMake) {
-        super(firstName + " " + lastName);
+        super(firstName + " " + lastName, Type.CUSTOMER);
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;

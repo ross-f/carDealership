@@ -1,7 +1,13 @@
 
+import java.beans.PropertyChangeSupport;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import javax.swing.AbstractListModel;
+import javax.swing.JFrame;
+
+import org.apache.commons.beanutils.PropertyUtils;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,11 +20,13 @@ import javax.swing.AbstractListModel;
  * @author ross
  */
 public class Search extends javax.swing.JPanel {
-    ArrayList<SearchableObject> objectToSearch;
-    ArrayList<SearchableObject> results;
+    // generic type man that i can opass though anytin g that is based off a search able object
+    ArrayList<? extends SearchableObject> objectToSearch;
+    ArrayList<? extends SearchableObject> results;
     AbstractListModel<String> resultsList;
+    boolean hasBeenSearch;
 
-    public Search(ArrayList<SearchableObject> objectToSearch) {
+    public Search(ArrayList<? extends SearchableObject> objectToSearch) {
         resultsList = new AbstractListModel<String>() {
             @Override
             public int getSize() {
@@ -32,7 +40,6 @@ public class Search extends javax.swing.JPanel {
         };
         
         this.objectToSearch = objectToSearch;
-        
         initComponents();
     }
 
@@ -51,6 +58,7 @@ public class Search extends javax.swing.JPanel {
         jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         backToMenu = new javax.swing.JButton();
+        viewButton = new javax.swing.JButton();
 
         SearchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +74,16 @@ public class Search extends javax.swing.JPanel {
         });
 
         jList1.setModel(resultsList);
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setText("Results");
@@ -78,25 +96,40 @@ public class Search extends javax.swing.JPanel {
             }
         });
 
+        viewButton.setText("View");
+        viewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewButtonActionPerformed(evt);
+            }
+        });
+        viewButton.setVisible(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(backToMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SearchButton)))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(backToMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(SearchButton))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(197, 197, 197)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(186, 186, 186)
+                                .addComponent(viewButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +141,11 @@ public class Search extends javax.swing.JPanel {
                     .addComponent(backToMenu))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(viewButton)
+                .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,6 +173,7 @@ public class Search extends javax.swing.JPanel {
         };
         
         jList1.setModel(resultsList);
+        hasBeenSearch = true;
     }//GEN-LAST:event_SearchButtonActionPerformed
     
     private void SearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFieldActionPerformed
@@ -149,6 +185,21 @@ public class Search extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_backToMenuActionPerformed
 
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jList1MouseClicked
+
+    public SearchableObject selected;
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        // TODO add your handling code here:
+        viewButton.setVisible(true);        
+        selected = hasBeenSearch ? results.get(evt.getFirstIndex()) : objectToSearch.get(evt.getFirstIndex());        
+    }//GEN-LAST:event_jList1ValueChanged
+
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+        
+    }//GEN-LAST:event_viewButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SearchButton;
@@ -157,5 +208,6 @@ public class Search extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 }

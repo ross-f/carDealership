@@ -1,12 +1,13 @@
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 /*
@@ -26,17 +27,19 @@ public class CarDealership implements ActionListener {
     CardLayout cl;
     Login login;
     Menu menu;
-    Search carSeaerch;
+    Search carSearch;
     Search employeeSearch;
     Search customerSearch;
     
     CarDealership() {
-        // Data creation
+        /***
+         * This is where the initial data for the app is created
+         */
         ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("admin", "Admin", "Staff", "admin", "admin", 0, true));
-        employees.add(new Employee("admfin", "Admin", "Staff", "admin", "admin", 0, true));
-        employees.add(new Employee("afdmifn", "Admin", "Staff", "admin", "admin", 0, true));
-        employees.add(new Employee("adamin", "Admin", "Staff", "admin", "admin", 0, true));
+        employees.add(new Employee("admin", "Admin", "Staff", "admin", "admin", 10, true));
+        employees.add(new Employee("Ross", "Fletcher", "Boss guy", "rfletcher", "password", 1234567, true));
+        employees.add(new Employee("example", "person", "person", "magic", "magic", 1, true));
+        employees.add(new Employee("low level", "user", "peasant", "user", "pass", -1));
         ArrayList<SearchableObject> searchableEmployees = new ArrayList<>();
         employees.forEach( (employee) -> searchableEmployees.add(employee.getBasicObject()));
         
@@ -66,13 +69,13 @@ public class CarDealership implements ActionListener {
         // TODO - Next three sections could be functionalized
         login = new Login(employees);
         menu = new Menu(employees);
-        carSeaerch = new Search(searchableCars);
-        employeeSearch = new Search(searchableEmployees);
-        customerSearch = new Search(searchableCustomers);
+        carSearch = new Search(cars);
+        employeeSearch = new Search(employees);
+        customerSearch = new Search(customers);
 
         app.add(login, "login");
         app.add(menu, "menu");
-        app.add(carSeaerch, "car");
+        app.add(carSearch, "car");
         app.add(employeeSearch, "employee");
         app.add(customerSearch, "customer");
 
@@ -82,9 +85,12 @@ public class CarDealership implements ActionListener {
         menu.customers.addActionListener(this);
         menu.staff.addActionListener(this);
         menu.exit.addActionListener(this);
-        carSeaerch.backToMenu.addActionListener(this);
+        carSearch.backToMenu.addActionListener(this);
         employeeSearch.backToMenu.addActionListener(this);
         customerSearch.backToMenu.addActionListener(this);
+        carSearch.viewButton.addActionListener(this);
+        employeeSearch.viewButton.addActionListener(this);
+        customerSearch.viewButton.addActionListener(this);
         
         frame.pack();
         frame.setVisible(true);
@@ -130,6 +136,28 @@ public class CarDealership implements ActionListener {
             
             case("←"):{
                 cl.show(app, "menu");
+                break;
+            }
+            
+            case("View"):{
+                // get active card by looping through layout and storeing what is visable
+                SearchableObject selected = null;
+                
+                View viewPanel;
+
+                for (Component comp: app.getComponents()) {
+                    if (comp.isVisible()) {
+                        Search searchPanel = (Search) comp;
+                        selected = searchPanel.selected;
+                    }
+                }
+
+                // posible memory leak by adding more and not deleting - lazy
+                viewPanel = new View(selected);
+                app.add(viewPanel, "view");
+                cl.show(app, "view");
+                viewPanel.backToMenu.addActionListener(this);
+                
                 break;
             }
                 

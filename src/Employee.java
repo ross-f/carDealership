@@ -4,7 +4,7 @@ class Employee extends SearchableObject {
     private boolean privileged;
 
     public Employee(String firstName, String lastName, String department, String userName, String password, double salary) {
-        super(firstName + " " + lastName);
+        super(firstName + " " + lastName, Type.EMPLOYEE);
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;

@@ -10,7 +10,7 @@ class Car extends SearchableObject {
     // A new car that is added to the system is never already sold so the date is set to null
     Car(String make, String model, String colour, String reg,
                double price, double numberOfMiles) {
-        super(make + " " + model);
+        super(make + " " + model, Type.CAR);
         this.make = make;
         this.reg = reg;
         this.colour = colour;
