@@ -34,6 +34,9 @@ public class CarDealership implements ActionListener {
     CarDealership() {
         /***
          * This is where the initial data for the app is created
+         * 
+         * This is completely flexable and new objects can be added here 
+         * and they will apprear in the searches and employees can be used to login
          */
         ArrayList<Employee> employees = new ArrayList<>();
         employees.add(new Employee("admin", "Admin", "Staff", "admin", "admin", 10, true));
@@ -45,7 +48,7 @@ public class CarDealership implements ActionListener {
         
         ArrayList<Car> cars = new ArrayList<>();
         cars.add(new Car("Nissan", "Micra", "Red", "AB12 CDE", 1000, 1000));
-        cars.add(new Car("Nissfan", "Micra", "Red", "AB12 CDE", 1000, 1000));
+        cars.add(new Car("Porshe", "Boxer", "Red", "AB12 CDE", 1000, 1000));
         cars.add(new Car("Nissdan", "Micra", "Red", "AB12 CDE", 1000, 1000));
         ArrayList<SearchableObject> searchableCars = new ArrayList<>();
         cars.forEach( (car) -> searchableCars.add(car.getBasicObject()));
