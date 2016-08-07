@@ -1,0 +1,24 @@
+=== Car Todo ===
+✓fix passing object on search page without libary
+✓  -> passing object should work by itself
+✓ no  -> maybe create mutipile classes
+✓ create view page
+✓ no  -> could be multi class
+✓  -> needs to take parameter through search
+✓ -> setup events in main
+  -> COMMENTS!!!!!!!!
+✓reate help modal
+needs more
+  -> screenshot and add to coversheet on green
+✓finish gliphy
+✓  -> add loop back to search
+✓  -> add view pages
+  -> finalise and review
+✓create class diragram
+✓  -> pickout key classes only
+✓  -> show links like extends clearly
+✓  -> only pickout major objects
+  -> finalise and review
+create maintainence guide
+create test plan
+upload
