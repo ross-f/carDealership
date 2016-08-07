@@ -39,9 +39,9 @@ public class CarDealership implements ActionListener {
          * and they will apprear in the searches and employees can be used to login
          */
         ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("admin", "Admin", "Staff", "admin", "admin", 10, true));
-        employees.add(new Employee("Ross", "Fletcher", "Boss guy", "rfletcher", "password", 1234567, true));
-        employees.add(new Employee("example", "person", "person", "magic", "magic", 1, true));
+        employees.add(new Employee("admin", "Admin", "Staff", "admin", "admin", 10));
+        employees.add(new Employee("Ross", "Fletcher", "Boss guy", "rfletcher", "password", 1234567));
+        employees.add(new Employee("example", "person", "person", "magic", "magic", 1));
         employees.add(new Employee("low level", "user", "peasant", "user", "pass", -1));
         ArrayList<SearchableObject> searchableEmployees = new ArrayList<>();
         employees.forEach( (employee) -> searchableEmployees.add(employee.getBasicObject()));

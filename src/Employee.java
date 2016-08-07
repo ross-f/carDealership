@@ -1,7 +1,6 @@
 class Employee extends SearchableObject {
     private String firstName, lastName, department, userName, password;
     private double salary;
-    private boolean privileged;
 
     public Employee(String firstName, String lastName, String department, String userName, String password, double salary) {
         super(firstName + " " + lastName, Type.EMPLOYEE);
@@ -11,11 +10,6 @@ class Employee extends SearchableObject {
         this.userName = userName;
         this.password = password;
         this.salary = salary;
-    }
-
-    public Employee(String firstName, String lastName, String department, String userName, String password, double salary, boolean privileged) {
-        this(firstName,lastName, department, userName, password, salary);
-        this.privileged = privileged;
     }
 
     public String getFirstName() {
@@ -65,15 +59,5 @@ class Employee extends SearchableObject {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-
-    public boolean isPrivileged() {
-        return privileged;
-    }
-
-    public void setPrivileged(boolean privileged) {
-        this.privileged = privileged;
-    }
-    
-    
 }
 
