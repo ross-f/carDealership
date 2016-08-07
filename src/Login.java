@@ -1,20 +1,6 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author ross
- */
 public class Login extends javax.swing.JPanel {
     private final ArrayList<Employee> employees;
 
@@ -22,7 +8,7 @@ public class Login extends javax.swing.JPanel {
      * Creates new form Login
      * @param employees
      */
-    public Login(ArrayList<Employee> employees) {
+    Login(ArrayList<Employee> employees) {
         this.employees = employees;
         initComponents();
     }

@@ -6,20 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author ross
- */
 
 public class CarDealership implements ActionListener {
     JFrame frame;
@@ -71,7 +58,7 @@ public class CarDealership implements ActionListener {
 
         // TODO - Next three sections could be functionalized
         login = new Login(employees);
-        menu = new Menu(employees);
+        menu = new Menu();
         carSearch = new Search(cars);
         employeeSearch = new Search(employees);
         customerSearch = new Search(customers);
@@ -106,9 +93,7 @@ public class CarDealership implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {        
-        System.out.println(ae.getActionCommand());
-        
+    public void actionPerformed(ActionEvent ae) {                
         switch(ae.getActionCommand()){
             case("Login"):{
                 if (login.done)
