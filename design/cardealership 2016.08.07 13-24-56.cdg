@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="cardealership">
+  <ClassDiagramComponents>
+    <Class name="Car" package="" visibility="public" xPosition="7.0" yPosition="79.0">
+      <Fields>
+        <Field name="make" type="String" visibility="private"/>
+        <Field name="price" type="double" visibility="private"/>
+        <Field name="numberOfMiles" type="double" visibility="private"/>
+        <Field name="soldDate" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="String" name="make"/>
+          <Argument type="String" name="model"/>
+          <Argument type="String" name="colour"/>
+          <Argument type="String" name="reg"/>
+          <Argument type="double" name="price"/>
+          <Argument type="double" name="numberOfMiles"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getMake" returnType="String" visibility="package"/>
+        <Method name="getReg" returnType="String" visibility="package"/>
+        <Method name="setColour" returnType="void" visibility="package">
+          <Argument type="String" name="colour"/>
+        </Method>
+        <Method name="getColour" returnType="String" visibility="package"/>
+        <Method name="getModel" returnType="String" visibility="package"/>
+        <Method name="setPrice" returnType="void" visibility="package">
+          <Argument type="double" name="price"/>
+        </Method>
+        <Method name="getPrice" returnType="double" visibility="package"/>
+        <Method name="setNumberOfMiles" returnType="void" visibility="package">
+          <Argument type="double" name="numberOfMiles"/>
+        </Method>
+        <Method name="getNumberOfMiles" returnType="double" visibility="package"/>
+        <Method name="setSoldDate" returnType="void" visibility="package">
+          <Argument type="Date" name="soldDate"/>
+        </Method>
+        <Method name="isSold" returnType="Date" visibility="package"/>
+      </Methods>
+    </Class>
+    <Class name="CarDealership" package="" visibility="public" xPosition="1786.0" yPosition="699.0">
+      <Fields>
+        <Field name="frame" type="JFrame" visibility="package"/>
+        <Field name="app" type="Container" visibility="package"/>
+        <Field name="cl" type="CardLayout" visibility="package"/>
+        <Field name="login" type="Login" visibility="package"/>
+        <Field name="menu" type="Menu" visibility="package"/>
+        <Field name="carSearch" type="Search" visibility="package"/>
+        <Field name="employeeSearch" type="Search" visibility="package"/>
+        <Field name="customerSearch" type="Search" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package"/>
+      </Constructors>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="actionPerformed" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="ae"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Customer" package="" visibility="public" xPosition="37.0" yPosition="642.0">
+      <Fields>
+        <Field name="firstName" type="String" visibility="private"/>
+        <Field name="dateOfBirth" type="Date" visibility="private"/>
+        <Field name="favouriteCarMake" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="Date" name="dateOfBirth"/>
+          <Argument type="String" name="favouriteCarMake"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getFirstName" returnType="String" visibility="public"/>
+        <Method name="setFirstName" returnType="void" visibility="public">
+          <Argument type="String" name="firstName"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="void" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getDateOfBirth" returnType="Date" visibility="public"/>
+        <Method name="setDateOfBirth" returnType="void" visibility="public">
+          <Argument type="Date" name="dateOfBirth"/>
+        </Method>
+        <Method name="getFavouriteCarMake" returnType="String" visibility="public"/>
+        <Method name="setFavouriteCarMake" returnType="void" visibility="public">
+          <Argument type="String" name="favouriteCarMake"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Employee" package="" visibility="public" xPosition="514.0" yPosition="1335.0">
+      <Fields>
+        <Field name="firstName" type="String" visibility="private"/>
+        <Field name="salary" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="department"/>
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="password"/>
+          <Argument type="double" name="salary"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getFirstName" returnType="String" visibility="public"/>
+        <Method name="setFirstName" returnType="void" visibility="public">
+          <Argument type="String" name="firstName"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="void" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getDepartment" returnType="String" visibility="public"/>
+        <Method name="setDepartment" returnType="void" visibility="public">
+          <Argument type="String" name="department"/>
+        </Method>
+        <Method name="getUserName" returnType="String" visibility="public"/>
+        <Method name="setUserName" returnType="void" visibility="public">
+          <Argument type="String" name="userName"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getSalary" returnType="double" visibility="public"/>
+        <Method name="setSalary" returnType="void" visibility="public">
+          <Argument type="double" name="salary"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Login" package="" visibility="public" xPosition="1601.0" yPosition="1523.0">
+      <Fields>
+        <Field name="employees" type="ArrayList&lt;Employee&gt;" visibility="private" isFinal="true"/>
+        <Field name="username" type="String" visibility="package"/>
+        <Field name="done" type="boolean" visibility="package" isTransient="true"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="login" type="javax.swing.JButton" visibility="public"/>
+        <Field name="message" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="passwordField" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="usernameField" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ArrayList&lt;Employee&gt;" name="employees"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="void" visibility="private"/>
+        <Method name="loginActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="passwordFieldActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="usernameFieldActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="clearLoginFields" returnType="void" visibility="public"/>
+        <Method name="showWarning" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="Menu" package="" visibility="public" xPosition="1160.0" yPosition="899.0">
+      <Fields>
+        <Field name="employees" type="ArrayList&lt;Employee&gt;" visibility="package"/>
+        <Field name="currentUser" type="String" visibility="package"/>
+        <Field name="cars" type="javax.swing.JButton" visibility="public"/>
+        <Field name="customers" type="javax.swing.JButton" visibility="public"/>
+        <Field name="exit" type="javax.swing.JButton" visibility="public"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="staff" type="javax.swing.JButton" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="ArrayList&lt;Employee&gt;" name="employees"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="void" visibility="private"/>
+        <Method name="carsActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="customersActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="staffActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="exitActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="setCurrentUser" returnType="void" visibility="package">
+          <Argument type="String" name="currentUser"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Search" package="" visibility="public" xPosition="1712.0" yPosition="41.0">
+      <Fields>
+        <Field name="objectToSearch" type="ArrayList&lt;? extends SearchableObject&gt;" visibility="package"/>
+        <Field name="results" type="ArrayList&lt;? extends SearchableObject&gt;" visibility="package"/>
+        <Field name="resultsList" type="AbstractListModel&lt;String&gt;" visibility="package"/>
+        <Field name="hasBeenSearch" type="boolean" visibility="package"/>
+        <Field name="selected" type="SearchableObject" visibility="public"/>
+        <Field name="SearchButton" type="javax.swing.JButton" visibility="private"/>
+        <Field name="SearchField" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="backToMenu" type="javax.swing.JButton" visibility="public"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jList1" type="javax.swing.JList&lt;String&gt;" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="viewButton" type="javax.swing.JButton" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ArrayList&lt;? extends SearchableObject&gt;" name="objectToSearch"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="void" visibility="private"/>
+        <Method name="SearchButtonActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="SearchFieldActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="backToMenuActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jList1MouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+        <Method name="jList1ValueChanged" returnType="void" visibility="private">
+          <Argument type="javax.swing.event.ListSelectionEvent" name="evt"/>
+        </Method>
+        <Method name="viewButtonActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SearchableObject" package="" visibility="public" xPosition="786.0" yPosition="239.0">
+      <Fields>
+        <Field name="name" type="String" visibility="package"/>
+        <Field name="type" type="Type" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="String" name="name"/>
+          <Argument type="Type" name="type"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getBasicObject" returnType="SearchableObject" visibility="public"/>
+        <Method name="getType" returnType="Type" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="View" package="" visibility="public" xPosition="1103.0" yPosition="524.0">
+      <Fields>
+        <Field name="objectToShow" type="SearchableObject" visibility="package"/>
+        <Field name="show" type="String" visibility="package"/>
+        <Field name="backToMenu" type="javax.swing.JButton" visibility="public"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jTextArea1" type="javax.swing.JTextArea" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="SearchableObject" name="objectToShow"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="void" visibility="private"/>
+        <Method name="backToMenuActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="Type" package="" visibility="public" xPosition="798.0" yPosition="41.0">
+      <Literals>
+        <Literal name="CAR"/>
+        <Literal name="EMPLOYEE"/>
+        <Literal name="CUSTOMER"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="selected" source="Search" target="SearchableObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Customer" target="SearchableObject"/>
+    <HasRelation name="menu" source="CarDealership" target="Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Car" target="SearchableObject"/>
+    <HasRelation name="employees" source="Menu" target="Employee" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Employee&gt;"/>
+    <HasRelation name="type" source="SearchableObject" target="Type" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="objectToSearch" source="Search" target="SearchableObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;? extends SearchableObject&gt;"/>
+    <IsRelation name="is" source="Employee" target="SearchableObject"/>
+    <HasRelation name="login" source="CarDealership" target="Login" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="objectToShow" source="View" target="SearchableObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="results" source="Search" target="SearchableObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;? extends SearchableObject&gt;"/>
+    <HasRelation name="employeeSearch" source="CarDealership" target="Search" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="customerSearch" source="CarDealership" target="Search" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="employees" source="Login" target="Employee" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Employee&gt;"/>
+    <HasRelation name="carSearch" source="CarDealership" target="Search" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

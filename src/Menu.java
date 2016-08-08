@@ -1,27 +1,5 @@
-
-import java.util.ArrayList;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author ross
- */
 public class Menu extends javax.swing.JPanel {
-    ArrayList<Employee> employees; 
-    String currentUser;
-
-    /**
-     * Creates new form Menu
-     * @param employees
-     * @param currentUser
-     */
-    Menu(ArrayList<Employee> employees) {
-        this.employees = employees;
+    Menu() {
         initComponents();
     }
 
@@ -39,7 +17,6 @@ public class Menu extends javax.swing.JPanel {
         customers = new javax.swing.JButton();
         staff = new javax.swing.JButton();
         exit = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("Car Dealership");
 
@@ -71,8 +48,6 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText(this.currentUser);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,9 +55,7 @@ public class Menu extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(136, 136, 136)
-                .addComponent(jLabel2)
-                .addGap(32, 32, 32))
+                .addGap(168, 168, 168))
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,9 +74,7 @@ public class Menu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addComponent(jLabel1)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cars)
@@ -132,16 +103,11 @@ public class Menu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_exitActionPerformed
 
-    void setCurrentUser(String currentUser){
-        this.currentUser = currentUser;
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton cars;
     public javax.swing.JButton customers;
     public javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     public javax.swing.JButton staff;
     // End of variables declaration//GEN-END:variables
 }

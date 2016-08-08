@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 /**
@@ -39,9 +37,9 @@ public class CarDealership implements ActionListener {
          */
         ArrayList<Employee> employees = new ArrayList<>();
         //            new Employee(firstName, lastName, role, username, password, salary)
-        employees.add(new Employee("admin", "Admin", "Staff", "admin", "admin", 10, true));
-        employees.add(new Employee("Ross", "Fletcher", "Boss guy", "rfletcher", "password", 1234567, true));
-        employees.add(new Employee("example", "person", "person", "magic", "magic", 1, true));
+        employees.add(new Employee("admin", "Admin", "Staff", "admin", "admin", 10));
+        employees.add(new Employee("Ross", "Fletcher", "Boss guy", "rfletcher", "password", 1234567));
+        employees.add(new Employee("example", "person", "person", "magic", "magic", 1));
         employees.add(new Employee("low level", "user", "peasant", "user", "pass", -1));
         ArrayList<SearchableObject> searchableEmployees = new ArrayList<>();
         employees.forEach( (employee) -> searchableEmployees.add(employee.getBasicObject()));
@@ -71,7 +69,7 @@ public class CarDealership implements ActionListener {
 
         // TODO - Next three sections could be functionalized
         login = new Login(employees);
-        menu = new Menu(employees);
+        menu = new Menu();
         carSearch = new Search(cars);
         employeeSearch = new Search(employees);
         customerSearch = new Search(customers);
@@ -107,8 +105,6 @@ public class CarDealership implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        System.out.println(ae.getActionCommand());
-
         switch(ae.getActionCommand()){
             case("Login"):{
                 if (login.done)
