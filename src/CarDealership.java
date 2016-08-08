@@ -8,6 +8,14 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+/**
+ * This is the main class this contains the main() method
+ * the data is created in this class and the base components of the UI are constructed
+ *
+ * CarDealership implements ActionListener so that this class can manage all
+ * of the actions in the class.
+ */
+
 public class CarDealership implements ActionListener {
     JFrame frame;
     Container app;
@@ -17,43 +25,69 @@ public class CarDealership implements ActionListener {
     Search carSearch;
     Search employeeSearch;
     Search customerSearch;
-    
+
     CarDealership() {
-        /***
+        /**
          * This is where the initial data for the app is created
-         * 
-         * This is completely flexable and new objects can be added here 
+         *
+         * This is completely flexable and new objects can be added here
          * and they will apprear in the searches and employees can be used to login
+         *
+         * Each ArrayList has field names inline.
          */
+
+
+        // create the array list that the employees will be stored in
         ArrayList<Employee> employees = new ArrayList<>();
+        //  create the new Employees in the following format
+        //            new Employee(firstName, lastName, role, username, password, salary)
         employees.add(new Employee("admin", "Admin", "Staff", "admin", "admin", 10));
         employees.add(new Employee("Ross", "Fletcher", "Boss guy", "rfletcher", "password", 1234567));
         employees.add(new Employee("example", "person", "person", "magic", "magic", 1));
         employees.add(new Employee("low level", "user", "peasant", "user", "pass", -1));
+        // create the ArrayList for the base employees that will be used for searching
         ArrayList<SearchableObject> searchableEmployees = new ArrayList<>();
+        // create the base employees in the ArrayList
         employees.forEach( (employee) -> searchableEmployees.add(employee.getBasicObject()));
-        
+
+        // create the array list that the cars will be stored in
         ArrayList<Car> cars = new ArrayList<>();
+        // create the new cars in the following format
+        //       new Car(make, model, colour, registration, miles, price
         cars.add(new Car("Nissan", "Micra", "Red", "AB12 CDE", 1000, 1000));
         cars.add(new Car("Porshe", "Boxer", "Red", "AB12 CDE", 1000, 1000));
         cars.add(new Car("Nissdan", "Micra", "Red", "AB12 CDE", 1000, 1000));
+        // create the ArrayList for the base employees that will be used for searching
         ArrayList<SearchableObject> searchableCars = new ArrayList<>();
+        // populate the arraylist
         cars.forEach( (car) -> searchableCars.add(car.getBasicObject()));
-        
+
+        // Create the array list that the customers will be stored in
         ArrayList<Customer> customers = new ArrayList<>();
+        // populate the ArrayList with new customers in the following format
+        //            new Customer(firstName, lastName, Date of Birth, Fave car brand
         customers.add(new Customer("Customer", "Customer", new Date(), "Merc"));
         customers.add(new Customer("Customer2", "Customer2", new Date(), "s"));
         customers.add(new Customer("Customer3", "Customer3", new Date(), "Mesrc"));
+        // create the ArrayList that will store the base customers
         ArrayList<SearchableObject> searchableCustomers = new ArrayList<>();
+        // populate that ArrayList
         customers.forEach( (customer) -> searchableCustomers.add(customer.getBasicObject()));
 
+        // Create the JFrame to hold the app
         frame = new JFrame("CarSales");
+        // exit the java process when closing the GUI
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // set a size - can be anything over around 450 becuase of the frame packing later
         frame.setSize(500,500);
 
+        // get the content within the frame
+        // -- this is because CardLayout requires the specific conent to focus on
         app = frame.getContentPane();
+        // create the Card layout to allow visible panels to be switched on the fly
         cl = new CardLayout();
 
+        // Apply the new layout
         app.setLayout(cl);
 
         // TODO - Next three sections could be functionalized
@@ -81,7 +115,7 @@ public class CarDealership implements ActionListener {
         carSearch.viewButton.addActionListener(this);
         employeeSearch.viewButton.addActionListener(this);
         customerSearch.viewButton.addActionListener(this);
-        
+
         frame.pack();
         frame.setVisible(true);
     }
@@ -93,19 +127,19 @@ public class CarDealership implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {                
+    public void actionPerformed(ActionEvent ae) {
         switch(ae.getActionCommand()){
             case("Login"):{
                 if (login.done)
                     cl.show(app, "menu");
                 break;
             }
-        
+
             case("Search Cars"):{
                 cl.show(app, "car");
                 break;
             }
-        
+
             case("Search Staff"):{
                 cl.show(app, "employee");
                 break;
@@ -115,22 +149,22 @@ public class CarDealership implements ActionListener {
                 cl.show(app, "customer");
                 break;
             }
-        
+
             case("Logout"):{
                 cl.show(app, "login");
                 login.clearLoginFields();
                 break;
             }
-            
+
             case("←"):{
                 cl.show(app, "menu");
                 break;
             }
-            
+
             case("View"):{
                 // get active card by looping through layout and storeing what is visable
                 SearchableObject selected = null;
-                
+
                 View viewPanel;
 
                 for (Component comp: app.getComponents()) {
@@ -145,10 +179,10 @@ public class CarDealership implements ActionListener {
                 app.add(viewPanel, "view");
                 cl.show(app, "view");
                 viewPanel.backToMenu.addActionListener(this);
-                
+
                 break;
             }
-                
+
             default:
                 throw new UnsupportedOperationException(
                         ae.getActionCommand() + " has not been implemented yet");

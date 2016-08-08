@@ -1,5 +1,12 @@
 import java.util.Date;
 
+/**
+ * Class Car is Searchable
+ * this means the class can be used by the Search class to search through an
+ * ArrayList of objects
+ */
+
+
 class Car extends SearchableObject {
     private String make, reg, colour, model;
     private double price;
