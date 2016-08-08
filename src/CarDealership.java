@@ -10,15 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
+ * This is the main class this contains the main() method
+ * the data is created in this class and the base components of the UI are constructed
  *
- * @author ross
+ * CarDealership implements ActionListener so that this class can manage all
+ * of the actions in the class.
  */
 
 public class CarDealership implements ActionListener {
@@ -30,29 +27,32 @@ public class CarDealership implements ActionListener {
     Search carSearch;
     Search employeeSearch;
     Search customerSearch;
-    
+
     CarDealership() {
-        /***
+        /**
          * This is where the initial data for the app is created
-         * 
-         * This is completely flexable and new objects can be added here 
+         *
+         * This is completely flexable and new objects can be added here
          * and they will apprear in the searches and employees can be used to login
+         *
+         * Each ArrayList has field names inline.
          */
         ArrayList<Employee> employees = new ArrayList<>();
+        //            new Employee(firstName, lastName, role, username, password, salary)
         employees.add(new Employee("admin", "Admin", "Staff", "admin", "admin", 10, true));
         employees.add(new Employee("Ross", "Fletcher", "Boss guy", "rfletcher", "password", 1234567, true));
         employees.add(new Employee("example", "person", "person", "magic", "magic", 1, true));
         employees.add(new Employee("low level", "user", "peasant", "user", "pass", -1));
         ArrayList<SearchableObject> searchableEmployees = new ArrayList<>();
         employees.forEach( (employee) -> searchableEmployees.add(employee.getBasicObject()));
-        
+
         ArrayList<Car> cars = new ArrayList<>();
         cars.add(new Car("Nissan", "Micra", "Red", "AB12 CDE", 1000, 1000));
         cars.add(new Car("Porshe", "Boxer", "Red", "AB12 CDE", 1000, 1000));
         cars.add(new Car("Nissdan", "Micra", "Red", "AB12 CDE", 1000, 1000));
         ArrayList<SearchableObject> searchableCars = new ArrayList<>();
         cars.forEach( (car) -> searchableCars.add(car.getBasicObject()));
-        
+
         ArrayList<Customer> customers = new ArrayList<>();
         customers.add(new Customer("Customer", "Customer", new Date(), "Merc"));
         customers.add(new Customer("Customer2", "Customer2", new Date(), "s"));
@@ -94,7 +94,7 @@ public class CarDealership implements ActionListener {
         carSearch.viewButton.addActionListener(this);
         employeeSearch.viewButton.addActionListener(this);
         customerSearch.viewButton.addActionListener(this);
-        
+
         frame.pack();
         frame.setVisible(true);
     }
@@ -106,21 +106,21 @@ public class CarDealership implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {        
+    public void actionPerformed(ActionEvent ae) {
         System.out.println(ae.getActionCommand());
-        
+
         switch(ae.getActionCommand()){
             case("Login"):{
                 if (login.done)
                     cl.show(app, "menu");
                 break;
             }
-        
+
             case("Search Cars"):{
                 cl.show(app, "car");
                 break;
             }
-        
+
             case("Search Staff"):{
                 cl.show(app, "employee");
                 break;
@@ -130,22 +130,22 @@ public class CarDealership implements ActionListener {
                 cl.show(app, "customer");
                 break;
             }
-        
+
             case("Logout"):{
                 cl.show(app, "login");
                 login.clearLoginFields();
                 break;
             }
-            
+
             case("←"):{
                 cl.show(app, "menu");
                 break;
             }
-            
+
             case("View"):{
                 // get active card by looping through layout and storeing what is visable
                 SearchableObject selected = null;
-                
+
                 View viewPanel;
 
                 for (Component comp: app.getComponents()) {
@@ -160,10 +160,10 @@ public class CarDealership implements ActionListener {
                 app.add(viewPanel, "view");
                 cl.show(app, "view");
                 viewPanel.backToMenu.addActionListener(this);
-                
+
                 break;
             }
-                
+
             default:
                 throw new UnsupportedOperationException(
                         ae.getActionCommand() + " has not been implemented yet");
