@@ -131,8 +131,10 @@ public class Search extends javax.swing.JPanel {
         // Filter the list
         results = objectToSearch
                 .stream()
-                .filter((instance) -> 
-                        instance.name.toLowerCase().contains(SearchField.getText().toLowerCase()))
+                .filter((instance) ->
+                        instance.name.toLowerCase()
+                        .contains(SearchField.getText().toLowerCase())
+                )
                 .collect(Collectors.toCollection(ArrayList::new));
         
         
@@ -169,7 +171,7 @@ public class Search extends javax.swing.JPanel {
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
         // TODO add your handling code here:
         viewButton.setVisible(true);        
-        selected = hasBeenSearch ? results.get(evt.getFirstIndex()) : objectToSearch.get(evt.getFirstIndex());        
+        selected = hasBeenSearch ? results.get(evt.getLastIndex()) : objectToSearch.get(evt.getLastIndex());        
     }//GEN-LAST:event_jList1ValueChanged
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed

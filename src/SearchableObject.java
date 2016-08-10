@@ -6,11 +6,6 @@ public class SearchableObject {
         this.name = name;
         this.type = type;
     }
-    
-    // TAKE THIS OUT AND CAST INSTEAD
-    public SearchableObject getBasicObject() {
-        return new SearchableObject(name,type);
-    }
 }
 
 enum Type {

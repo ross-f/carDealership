@@ -45,10 +45,6 @@ public class CarDealership implements ActionListener {
         employees.add(new Employee("Ross", "Fletcher", "Boss guy", "rfletcher", "password", 1234567));
         employees.add(new Employee("example", "person", "person", "magic", "magic", 1));
         employees.add(new Employee("low level", "user", "peasant", "user", "pass", -1));
-        // create the ArrayList for the base employees that will be used for searching
-        ArrayList<SearchableObject> searchableEmployees = new ArrayList<>();
-        // create the base employees in the ArrayList
-        employees.forEach( (employee) -> searchableEmployees.add(employee.getBasicObject()));
 
         // create the array list that the cars will be stored in
         ArrayList<Car> cars = new ArrayList<>();
@@ -57,22 +53,14 @@ public class CarDealership implements ActionListener {
         cars.add(new Car("Nissan", "Micra", "Red", "AB12 CDE", 1000, 1000));
         cars.add(new Car("Porshe", "Boxer", "Red", "AB12 CDE", 1000, 1000));
         cars.add(new Car("Nissdan", "Micra", "Red", "AB12 CDE", 1000, 1000));
-        // create the ArrayList for the base employees that will be used for searching
-        ArrayList<SearchableObject> searchableCars = new ArrayList<>();
-        // populate the arraylist
-        cars.forEach( (car) -> searchableCars.add(car.getBasicObject()));
 
         // Create the array list that the customers will be stored in
         ArrayList<Customer> customers = new ArrayList<>();
         // populate the ArrayList with new customers in the following format
         //            new Customer(firstName, lastName, Date of Birth, Fave car brand
-        customers.add(new Customer("Customer", "Customer", new Date(), "Merc"));
-        customers.add(new Customer("Customer2", "Customer2", new Date(), "s"));
-        customers.add(new Customer("Customer3", "Customer3", new Date(), "Mesrc"));
-        // create the ArrayList that will store the base customers
-        ArrayList<SearchableObject> searchableCustomers = new ArrayList<>();
-        // populate that ArrayList
-        customers.forEach( (customer) -> searchableCustomers.add(customer.getBasicObject()));
+        customers.add(new Customer("Customer", "Customer", "Merc"));
+        customers.add(new Customer("Customer2", "Customer2", "s"));
+        customers.add(new Customer("Customer3", "Customer3", "Mesrc"));
 
         // Create the JFrame to hold the app
         frame = new JFrame("CarSales");
@@ -130,8 +118,6 @@ public class CarDealership implements ActionListener {
       // TODO: RESEARCH THIS
         SwingUtilities.invokeLater(() -> {
             CarDealership startFrame = new CarDealership();
-
-
         });
     }
 

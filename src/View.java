@@ -16,10 +16,10 @@ public class View extends javax.swing.JPanel {
                 Car car = (Car) objectToShow;
                 
                 show = String.format(
-                        "%s %s %s"
+                        "%s %s %s \n"
                         + "Number of miles: %s\n"
                         + "Registraton: %s\n"
-                        + "Price: £%s </html>",
+                        + "Price: £%s",
                         car.getColour(), car.getMake(), car.getModel(),
                         car.getNumberOfMiles(), car.getReg(), car.getPrice());
                 
@@ -29,7 +29,16 @@ public class View extends javax.swing.JPanel {
             case("EMPLOYEE"):{
                 Employee employee = (Employee) objectToShow;
                 
-                show = employee.getDepartment();
+                show = String.format(
+                        "%s %s \n"
+                        + "Salary: %s \n"
+                        + "Department: %s \n"
+                        + "Username: %s \n"
+                        + "%s's password is not displayed for security purposes", 
+                        employee.getFirstName(), employee.getLastName(),
+                        employee.getSalary(),  employee.getDepartment(),
+                        employee.getUserName(), employee.getFirstName()
+                );
                 
                 break;
             }
@@ -37,7 +46,12 @@ public class View extends javax.swing.JPanel {
             case("CUSTOMER"):{
                 Customer customer = (Customer) objectToShow;
                 
-                show = customer.getFavouriteCarMake();
+                show = String.format(
+                        "%s %s \n"
+                        + "Favourite car make: %s \n",
+                        customer.getFirstName(), customer.getLastName(),
+                        customer.getFavouriteCarMake()
+                );
                 
                 break;
             }
@@ -82,9 +96,15 @@ public class View extends javax.swing.JPanel {
 
         jLabel1.setText("View");
 
+        jScrollPane2.setBorder(null);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(240, 240, 240));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setText(show);
+        jTextArea1.setAutoscrolls(false);
+        jTextArea1.setBorder(null);
         jScrollPane2.setViewportView(jTextArea1);
 
         backToMenu.setText("←");
@@ -100,25 +120,30 @@ public class View extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addComponent(backToMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(118, 118, 118)
-                        .addComponent(jLabel1)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backToMenu))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backToMenu))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
