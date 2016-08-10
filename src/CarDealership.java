@@ -105,7 +105,20 @@ public class CarDealership implements ActionListener {
         app.add(carSearch, "car");
         app.add(employeeSearch, "employee");
         app.add(customerSearch, "customer");
-
+        
+        // Add the carDealership action listener???/
+        login.login.addActionListener(this);
+        menu.cars.addActionListener(this);
+        menu.customers.addActionListener(this);
+        menu.staff.addActionListener(this);
+        menu.exit.addActionListener(this);
+        carSearch.backToMenu.addActionListener(this);
+        employeeSearch.backToMenu.addActionListener(this);
+        customerSearch.backToMenu.addActionListener(this);
+        carSearch.viewButton.addActionListener(this);
+        employeeSearch.viewButton.addActionListener(this);
+        customerSearch.viewButton.addActionListener(this);
+        
         // Pack the JFrame - this changes the size of the frame to match the largest panel
         frame.pack();
         // Now we've finished the GUI - show it to the user
@@ -118,18 +131,7 @@ public class CarDealership implements ActionListener {
         SwingUtilities.invokeLater(() -> {
             CarDealership startFrame = new CarDealership();
 
-            // Add the carDealership action listener???/
-            login.login.addActionListener(startFrame);
-            menu.cars.addActionListener(startFrame);
-            menu.customers.addActionListener(startFrame);
-            menu.staff.addActionListener(startFrame);
-            menu.exit.addActionListener(startFrame);
-            carSearch.backToMenu.addActionListener(startFrame);
-            employeeSearch.backToMenu.addActionListener(startFrame);
-            customerSearch.backToMenu.addActionListener(startFrame);
-            carSearch.viewButton.addActionListener(startFrame);
-            employeeSearch.viewButton.addActionListener(startFrame);
-            customerSearch.viewButton.addActionListener(startFrame);
+
         });
     }
 
