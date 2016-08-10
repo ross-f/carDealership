@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
  * the data is created in this class and the base components of the UI are constructed
  *
  * CarDealership implements ActionListener so that this class can manage all
- * of the actions in the class.
+ * of the actions in the other classes.
  */
 
 public class CarDealership implements ActionListener {
@@ -90,72 +90,100 @@ public class CarDealership implements ActionListener {
         // Apply the new layout
         app.setLayout(cl);
 
-        // TODO - Next three sections could be functionalized
+        // Contruct the diffent classes that hold the interchangeable panels
         login = new Login(employees);
         menu = new Menu();
+        // The search class is constucted with different ArrayLists of objects
+        // each of the panels are constucted with differnt array lists
         carSearch = new Search(cars);
         employeeSearch = new Search(employees);
         customerSearch = new Search(customers);
 
+        // add the searches to the app container and give them lables
         app.add(login, "login");
         app.add(menu, "menu");
         app.add(carSearch, "car");
         app.add(employeeSearch, "employee");
         app.add(customerSearch, "customer");
 
-        // TODO - don't pass this through when your still building it
-        login.login.addActionListener(this);
-        menu.cars.addActionListener(this);
-        menu.customers.addActionListener(this);
-        menu.staff.addActionListener(this);
-        menu.exit.addActionListener(this);
-        carSearch.backToMenu.addActionListener(this);
-        employeeSearch.backToMenu.addActionListener(this);
-        customerSearch.backToMenu.addActionListener(this);
-        carSearch.viewButton.addActionListener(this);
-        employeeSearch.viewButton.addActionListener(this);
-        customerSearch.viewButton.addActionListener(this);
-
+        // Pack the JFrame - this changes the size of the frame to match the largest panel
         frame.pack();
+        // Now we've finished the GUI - show it to the user
         frame.setVisible(true);
     }
 
+    // main - this is where the program starts
     public static void main(String[] args) {
+      // TODO: RESEARCH THIS
         SwingUtilities.invokeLater(() -> {
             CarDealership startFrame = new CarDealership();
+
+            // Add the carDealership action listener???/
+            login.login.addActionListener(startFrame);
+            menu.cars.addActionListener(startFrame);
+            menu.customers.addActionListener(startFrame);
+            menu.staff.addActionListener(startFrame);
+            menu.exit.addActionListener(startFrame);
+            carSearch.backToMenu.addActionListener(startFrame);
+            employeeSearch.backToMenu.addActionListener(startFrame);
+            customerSearch.backToMenu.addActionListener(startFrame);
+            carSearch.viewButton.addActionListener(startFrame);
+            employeeSearch.viewButton.addActionListener(startFrame);
+            customerSearch.viewButton.addActionListener(startFrame);
         });
     }
 
+    /**
+     * void actionPerformed
+     * This method will Override the actionPerformed method that is part of
+     * the ActionListener interface and will be called whenever an action
+     * element that has had the curent object (startFrame) added to it.
+     *
+     * This method should never be called in code that is written in Java files.
+     * It will be automatically called by the classes that use GUI elements
+     * and have action listeners.
+     *
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
+        // Get the name of the button that has been clicked
         switch(ae.getActionCommand()){
+            // Compare that name to each case statement
             case("Login"):{
+                // If login succesful then switch the panel cards to the menu
+                // reason for the "feature" of having to click Login twice
                 if (login.done)
                     cl.show(app, "menu");
                 break;
             }
 
+            // if search cars clicked swich panels to the Car Search
             case("Search Cars"):{
                 cl.show(app, "car");
                 break;
             }
 
+            // if search staff clicked swich panels to the Staff Search
             case("Search Staff"):{
                 cl.show(app, "employee");
                 break;
             }
 
+            // if search customers clicked swich panels to the Customer Search
             case("Search Customers"):{
                 cl.show(app, "customer");
                 break;
             }
 
+            // if logout clicked switch panels back to the Login page
             case("Logout"):{
                 cl.show(app, "login");
+                // also clear the fields so you can't just click login again
                 login.clearLoginFields();
                 break;
             }
 
+            // ASCII for left arrow - if you can't see it set encoding to ANSI
             case("←"):{
                 cl.show(app, "menu");
                 break;
