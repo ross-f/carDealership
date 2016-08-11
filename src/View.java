@@ -57,26 +57,6 @@ public class View extends javax.swing.JPanel {
             }
         }
         
-        // work out the secret type
-        
-        
-        
-        
-        /* LEGACY
-         Field[] attributes = selected.getClass().getDeclaredFields();
-        
-        for(Field field: attributes) {
-            System.out.print(field.getName());
-            
-            try {
-               PropertyUtils.setSimpleProperty(selected, field.getName(), "value");
-               Object value = PropertyUtils.getSimpleProperty(selected, field.getName());
-               System.out.println(value.toString());
-            } catch (Exception e) {
-               e.printStackTrace();
-            }
-        } */
-        
         initComponents();
     }
 
