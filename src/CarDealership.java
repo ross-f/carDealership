@@ -93,7 +93,7 @@ public class CarDealership implements ActionListener {
         app.add(carSearch, "car");
         app.add(employeeSearch, "employee");
         app.add(customerSearch, "customer");
-        
+
         // Add the carDealership action listener???/
         login.login.addActionListener(this);
         menu.cars.addActionListener(this);
@@ -106,7 +106,7 @@ public class CarDealership implements ActionListener {
         carSearch.viewButton.addActionListener(this);
         employeeSearch.viewButton.addActionListener(this);
         customerSearch.viewButton.addActionListener(this);
-        
+
         // Pack the JFrame - this changes the size of the frame to match the largest panel
         frame.pack();
         // Now we've finished the GUI - show it to the user
@@ -173,25 +173,42 @@ public class CarDealership implements ActionListener {
 
             // ASCII for left arrow - if you can't see it set encoding to ANSI
             case("←"):{
+                // Show menu if back is pressed
                 cl.show(app, "menu");
                 break;
             }
 
+            /**
+             * This case will take the user to the veiw screen for the currently
+             * selected object from anyone of the Car, Customer or Employee search
+             * screens.
+             *
+             * It does this by first finding the currently shown Panel and then
+             * getting the (SearchableObject) selected attribute out of that class
+             *
+             */
             case("View"):{
                 // get active card by looping through layout and storeing what is visable
                 SearchableObject selected = null;
 
-                View viewPanel;
-
+                // a for each loop to loop though each component
                 for (Component comp: app.getComponents()) {
+                    // check if the current compoent in the loop is visable
                     if (comp.isVisible()) {
+                        // The view button is only found on the search page
+                        // And this case would get run if the view button is clicked
+                        // which means the visable component must be a search panel.
+
+                        // Here the component is casted to a search panel so we can
+                        // use it as if it was a search panel all along
                         Search searchPanel = (Search) comp;
+                        // pull out t
                         selected = searchPanel.selected;
                     }
                 }
 
                 // posible memory leak by adding more and not deleting - lazy
-                viewPanel = new View(selected);
+                View viewPanel = new View(selected);
                 app.add(viewPanel, "view");
                 cl.show(app, "view");
                 viewPanel.backToMenu.addActionListener(this);
