@@ -1,9 +1,16 @@
+/**
+ * Class Customer extends SearchableObject
+ *
+ * This class is a blueprint for the customer objects.
+ * In the main these are created into an ArrayList of objects
+ */
 public class Customer extends SearchableObject {
     private String firstName, lastName;
     private String favouriteCarMake;
-    
-    // constuctor for a customer who hasnt purchased anything yet
+
+    // constuctor for a customer sets all of the attributes on a customer
     public Customer(String firstName, String lastName, String favouriteCarMake) {
+        // Constuct the searchable object with firstName + lastName as the name and customer as the type
         super(firstName + " " + lastName, Type.CUSTOMER);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -14,23 +21,11 @@ public class Customer extends SearchableObject {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getFavouriteCarMake() {
         return favouriteCarMake;
-    }
-
-    public void setFavouriteCarMake(String favouriteCarMake) {
-        this.favouriteCarMake = favouriteCarMake;
     }
 }
