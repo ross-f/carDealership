@@ -11,7 +11,6 @@ class Car extends SearchableObject {
     private String make, reg, colour, model;
     private double price;
     private double numberOfMiles;
-    private Date soldDate;
 
     // Constructor to allow new objects to be made quickly
     // A new car that is added to the system is never already sold so the date is set to null
@@ -24,7 +23,6 @@ class Car extends SearchableObject {
         this.model = model;
         this.price = price;
         this.numberOfMiles = numberOfMiles;
-        soldDate = null;
     }
 
     /*
@@ -69,13 +67,5 @@ class Car extends SearchableObject {
 
     double getNumberOfMiles() {
         return numberOfMiles;
-    }
-
-    void setSoldDate(Date soldDate) {
-        this.soldDate = soldDate;
-    }
-
-    Date isSold() {
-        return soldDate;
     }
 }

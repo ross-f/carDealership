@@ -1,5 +1,3 @@
-import java.util.Date;
-
 public class Customer extends SearchableObject {
     private String firstName, lastName;
     private String favouriteCarMake;
