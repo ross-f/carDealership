@@ -5,17 +5,17 @@ import java.util.Date;
  * this means the class can be used by the Search class to search through an
  * ArrayList of objects
  */
-
-
 class Car extends SearchableObject {
     private String make, reg, colour, model;
     private double price;
     private double numberOfMiles;
 
     // Constructor to allow new objects to be made quickly
-    // A new car that is added to the system is never already sold so the date is set to null
     Car(String make, String model, String colour, String reg,
                double price, double numberOfMiles) {
+        // Call the searchabe object class
+        // Construct the name as the make and the model
+        // Also constuct the type as CAR
         super(make + " " + model, Type.CAR);
         this.make = make;
         this.reg = reg;
@@ -25,23 +25,13 @@ class Car extends SearchableObject {
         this.numberOfMiles = numberOfMiles;
     }
 
-    /*
-     Setters are here for things that can be changed while it's in stock
-       - Colour
-       - Price
-       - Number of miles
-       - Date soldDate
-    */
+    // Code below is getters for the car object this will get the data from all the private attributes
     String getMake() {
         return make;
     }
 
     String getReg() {
         return reg;
-    }
-
-    void setColour(String colour) {
-        this.colour = colour;
     }
 
     String getColour() {
@@ -53,16 +43,8 @@ class Car extends SearchableObject {
     }
 
 
-    void setPrice(double price) {
-        this.price = price;
-    }
-
     double getPrice() {
         return price;
-    }
-
-    void setNumberOfMiles(double numberOfMiles) {
-        this.numberOfMiles = numberOfMiles;
     }
 
     double getNumberOfMiles() {
