@@ -201,20 +201,26 @@ public class CarDealership implements ActionListener {
                         // Here the component is casted to a search panel so we can
                         // use it as if it was a search panel all along
                         Search searchPanel = (Search) comp;
-                        // pull out t
+                        // pull out the attribute that is stored as slected on the search
+                        // page and store it in the selected variable to use it on for view
                         selected = searchPanel.selected;
                     }
                 }
 
-                // posible memory leak by adding more and not deleting - lazy
+                // genrerate the view panel using the selected attribute
                 View viewPanel = new View(selected);
+                // Add the new view panel to the jframe
                 app.add(viewPanel, "view");
+                // Switch to it on the card layout
                 cl.show(app, "view");
+                // add an actionlistener to go back to the menu
                 viewPanel.backToMenu.addActionListener(this);
 
                 break;
             }
 
+            // This is for debugging puroses only, will throw an usuported exception if code
+            // has been writen for action listener and it hasn't been written in the case switch
             default:
                 throw new UnsupportedOperationException(
                         ae.getActionCommand() + " has not been implemented yet");
