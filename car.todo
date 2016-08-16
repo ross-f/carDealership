@@ -5,10 +5,10 @@
 ✓  create view page
 ✓  no  -> could be multi class
 ✓    -> needs to take parameter through search
-✓    -> setup events in main
+✓   -> setup events in main
 i  COMMENTS!!!!!!!!
-i create help modal
-  -> screenshot and add to coversheet on green
+✓ create help modal
+  -> screenshot and add to coversheet
 ✓ finish gliphy
 ✓   -> add loop back to search
 ✓   -> add view pages
@@ -21,9 +21,9 @@ i create help modal
   design
 i  -> intro
 ✓  -> flowchart
-i  -> class diagram
-  -> wireframes
-  -> summary
- create maintainence guide
+✓  -> class diagram
+i  -> wireframes
+✓  -> summary
+i create maintainence guide
  create test plan
  upload
