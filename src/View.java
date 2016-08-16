@@ -1,7 +1,7 @@
 public class View extends javax.swing.JPanel {
     SearchableObject objectToShow;
     String show;
-    
+
     /**
      * Creates a JPanel of a view page for the object that it is constructed with
      *  - Can be constructed with anything that extends searchableObject
@@ -10,11 +10,11 @@ public class View extends javax.swing.JPanel {
      */
     public View(SearchableObject objectToShow) {
         this.objectToShow = objectToShow;
-                
+
         switch(objectToShow.type.toString()){
             case("CAR"):{
                 Car car = (Car) objectToShow;
-                
+
                 show = String.format(
                         "%s %s %s \n"
                         + "Number of miles: %s\n"
@@ -22,41 +22,41 @@ public class View extends javax.swing.JPanel {
                         + "Price: £%s",
                         car.getColour(), car.getMake(), car.getModel(),
                         car.getNumberOfMiles(), car.getReg(), car.getPrice());
-                
+
                 break;
             }
-            
+
             case("EMPLOYEE"):{
                 Employee employee = (Employee) objectToShow;
-                
+
                 show = String.format(
                         "%s %s \n"
                         + "Salary: %s \n"
                         + "Department: %s \n"
                         + "Username: %s \n"
-                        + "%s's password is not displayed for security purposes", 
+                        + "%s's password is not displayed for security purposes",
                         employee.getFirstName(), employee.getLastName(),
                         employee.getSalary(),  employee.getDepartment(),
                         employee.getUserName(), employee.getFirstName()
                 );
-                
+
                 break;
             }
-            
+
             case("CUSTOMER"):{
                 Customer customer = (Customer) objectToShow;
-                
+
                 show = String.format(
                         "%s %s \n"
                         + "Favourite car make: %s \n",
                         customer.getFirstName(), customer.getLastName(),
                         customer.getFavouriteCarMake()
                 );
-                
+
                 break;
             }
         }
-        
+
         initComponents();
     }
 
