@@ -149,17 +149,14 @@ public class CarDealership implements ActionListener {
         ArrayList<Car> cars = new ArrayList<>();
         // create the new cars in the following format
         //       new Car(make, model, colour, registration, miles, price
-        cars.add(new Car("Nissan", "Micra", "Red", "AB12 CDE", 100000000000, 1));
-        cars.add(new Car("Porshe", "Boxer", "Yellow", "AB12 CDE", 10, 1000000000000));
-        cars.add(new Car("Nissdan", "Micra", "Red", "AB12 CDE", 1000, 1000));
+        cars.add(new Car("Nissan", "Micra", "Red", "AB12 CDE", 100000000, 1));
+        cars.add(new Car("Porshe", "Boxer", "Yellow", "AA12 CDE", 10, 1000000000));
+        cars.add(new Car("Audi", "A2", "Silver", "CD12 CDE", 0, 100000));
 
         // Create the array list that the customers will be stored in
         ArrayList<Customer> customers = new ArrayList<>();
         // populate the ArrayList with new customers in the following format
         //            new Customer(firstName, lastName, Date of Birth, Fave car brand
-        customers.add(new Customer("Customer", "Customer", "Merc"));
-        customers.add(new Customer("Customer2", "Customer2", "s"));
-        customers.add(new Customer("Customer3", "Customer3", "Mesrc"));
         // 100 CUSTOMERS GENERATED FROM http://random-name-generator.info/
         // WITH CARS FROM https://en.wikipedia.org/wiki/List_of_automobile_manufacturers
         customers.add(new Customer("Evelyn", "Brooks", "Ranger"));
