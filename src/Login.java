@@ -210,15 +210,15 @@ public class Login extends javax.swing.JPanel {
     // If help button pressed then show the help modal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JOptionPane.showMessageDialog(this, "This is the car dealership app "
-            + "with this you can easily search and view different cars and customers. "
+            + "with this you can easily search and view different cars and customers.\n "
             + "To use the app you will need to login with correct credentials, "
-            + "for maintainence use only you can login with username 'admin' "
+            + "for maintainence use only you can login with username 'admin'\n "
             + "and password 'admin', this will allow you to see and use all the "
-            + "functionality of the app. When you login you will be taken to a menu "
+            + "functionality of the app. When you login you will be taken to a menu\n "
             + "where you will be able to choose what you would like to search for. "
-            + "When on a search page you will be able to see a list of cars, "
+            + "When on a search page you will be able to see a list of cars,\n "
             + "customers or employees that you can search through. "
-            + "To use the search simply enter a few letters (or words) that you "
+            + "To use the search simply enter a few letters (or words) that you\n "
             + "want to search for. Whenever you can see any results on the page, "
             + "you can click on one and click the view button to show all its details.");
     }//GEN-LAST:event_jButton1ActionPerformed
