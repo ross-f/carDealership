@@ -1,5 +1,3 @@
-import java.util.Date;
-
 /**
  * Class Car is Searchable
  * this means the class can be used by the Search class to search through an

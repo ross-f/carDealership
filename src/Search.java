@@ -2,12 +2,20 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import javax.swing.AbstractListModel;
 
+/**
+ * Search class provides a GUI for searching though any object that extends
+ * SearchableObject, any object can be searched as long as it was constucted
+ * with the name attirbute. Construct this panel with an ArrayList of objects
+ * that extend a SearchableObjects and it will build a Search JPanel
+ */
 public class Search extends javax.swing.JPanel {
-    // generic type man that i can opass though anytin g that is based off a search able object
+    // generic type means that you can pass though anything that is based off a searchable object
     ArrayList<? extends SearchableObject> objectToSearch;
     ArrayList<? extends SearchableObject> results;
     AbstractListModel<String> resultsList;
     boolean hasBeenSearch;
+    // Made public as it's pulled out in the event listeners to build the View class
+    public SearchableObject selected;
 
     public Search(ArrayList<? extends SearchableObject> objectToSearch) {
         resultsList = new AbstractListModel<String>() {
@@ -21,7 +29,7 @@ public class Search extends javax.swing.JPanel {
                 return objectToSearch.get(i).name;
             }
         };
-        
+
         this.objectToSearch = objectToSearch;
         initComponents();
     }
@@ -127,17 +135,23 @@ public class Search extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Method that is called when the search button is pressed.
+     * This is very similar to the loginActionPerformed method in the Login class
+     * as they both filter array lists based on entered values.
+     */
     private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
-        // Filter the list
+        // Gets the entered data so it can be used in the filter
+        String searchText = SearchField.getText().toLowerCase();
+
+        // Filter the list of objects to find one that contains the searchText
         results = objectToSearch
                 .stream()
-                .filter((instance) ->
-                        instance.name.toLowerCase()
-                        .contains(SearchField.getText().toLowerCase())
-                )
+                .filter((i) -> i.name.toLowerCase().contains(searchText))
                 .collect(Collectors.toCollection(ArrayList::new));
-        
-        
+
+
+        // Set the results list
         resultsList = new AbstractListModel<String>() {
             @Override
             public int getSize() {
@@ -149,33 +163,27 @@ public class Search extends javax.swing.JPanel {
                 return results.get(i).name;
             }
         };
-        
+
         jList1.setModel(resultsList);
         hasBeenSearch = true;
     }//GEN-LAST:event_SearchButtonActionPerformed
-    
+
     private void SearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFieldActionPerformed
-        // decoped helper text
-//        if(SearchField.getText().equals("Enter search...")) SearchField.setText("");
     }//GEN-LAST:event_SearchFieldActionPerformed
 
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_backToMenuActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_jList1MouseClicked
 
-    public SearchableObject selected;
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        // TODO add your handling code here:
-        viewButton.setVisible(true);        
-        selected = hasBeenSearch ? results.get(evt.getLastIndex()) : objectToSearch.get(evt.getLastIndex());        
+        viewButton.setVisible(true);
+        selected = hasBeenSearch ? results.get(evt.getLastIndex()) : objectToSearch.get(evt.getLastIndex());
     }//GEN-LAST:event_jList1ValueChanged
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
-        
+
     }//GEN-LAST:event_viewButtonActionPerformed
 
 

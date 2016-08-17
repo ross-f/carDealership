@@ -190,7 +190,7 @@ public class CarDealership implements ActionListener {
                 // get active card by looping through layout and storeing what is visable
                 SearchableObject selected = null;
 
-                // a for each loop to loop though each component
+                // a for each loop to loop though each component inside the main frame
                 for (Component comp: app.getComponents()) {
                     // check if the current compoent in the loop is visable
                     if (comp.isVisible()) {
