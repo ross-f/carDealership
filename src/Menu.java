@@ -5,7 +5,7 @@
 public class Menu extends javax.swing.JPanel {
     // Create menu form - this is just a basic GUI without much functionality
     Menu() {
-        // Create JPanel and it's components
+        // Create JPanel and its components
         initComponents();
     }
 

@@ -11,8 +11,8 @@ class Car extends SearchableObject {
     // Constructor to allow new objects to be made quickly
     Car(String make, String model, String colour, String reg,
                double price, double numberOfMiles) {
-        // Call the searchabe object class
-        // Construct the name as the make and the model
+        // Call the searchable object class
+        // Construct the name attribute as the make and the model
         // Also constuct the type as CAR
         super(make + " " + model, Type.CAR);
         this.make = make;

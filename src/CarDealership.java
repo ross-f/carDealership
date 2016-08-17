@@ -93,7 +93,7 @@ public class CarDealership implements ActionListener {
         app.add(employeeSearch, "employee");
         app.add(customerSearch, "customer");
 
-        // Add the carDealership action listener???/
+        // Add the carDealership action listener to each button
         login.login.addActionListener(this);
         menu.cars.addActionListener(this);
         menu.customers.addActionListener(this);
@@ -114,8 +114,10 @@ public class CarDealership implements ActionListener {
 
     // main - this is where the program starts
     public static void main(String[] args) {
-      // TODO: RESEARCH THIS
+        // causes the startframe to get constructed after any other AWT (swing) threads have been processed
+        // This means that the app runs independantly instead of off the back of the static main
         SwingUtilities.invokeLater(() -> {
+            // construct the current class - creating the starting frame
             CarDealership startFrame = new CarDealership();
         });
     }

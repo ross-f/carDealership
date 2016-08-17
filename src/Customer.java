@@ -17,6 +17,7 @@ public class Customer extends SearchableObject {
         this.favouriteCarMake = favouriteCarMake;
     }
 
+    // code below are the getters for all of the attributes on the customer object
     public String getFirstName() {
         return firstName;
     }

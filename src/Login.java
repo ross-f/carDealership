@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
+ * Login extends JPanel
+ *
  * This is the class for the login page, this extends JPanel so that it can be
  * like any other JPanel and added to object like JFrames
  */
@@ -169,10 +171,10 @@ public class Login extends javax.swing.JPanel {
           // convert the employees to a stream so it can be filtered
           employees.stream()
             // here `e` is each instance of an employee in the stream
-            // filiter out all of the records that don't match the critera
+            // remove all of the records that don't match the critera
             // The critea being that the entered username must match the one on the employee
             .filter(e -> e.getUserName().equalsIgnoreCase(username))
-            // now we the stream should only contain the ones with the enterded username
+            // now the stream should only contain the ones with the entered username
             // Pull the entire employee object out of the first in the stream
             // store that in the matched employee variable
             .findFirst()
@@ -186,44 +188,47 @@ public class Login extends javax.swing.JPanel {
         } catch (NullPointerException e){
             // Show a warning if no username matches
             showWarning();
-            // return because the rest of the code is of no use
+            // return early because the rest of the code is of no use
             return;
         }
 
+        // Object.equals() returns a boolean
+        // the done variable wants to be true if the the employees password equals the entered pass
+        // so we can just call the method an put the output straight into done
         // if password matches then set the status to done
-        if (matchedEmployee.getPassword().equals(password)) done = true;
+        done = matchedEmployee.getPassword().equals(password);
         // if password doesn't match then show a warning
-        else showWarning();
+        if(!done) showWarning();
     }//GEN-LAST:event_loginActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_usernameFieldActionPerformed
 
     // If help button pressed then show the help modal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JOptionPane.showMessageDialog(this, "This is the car dealership app "
-            + "With this you can easily search and view different cars and customers "
-            + "To use the app you will need to login with correct credentials "
-            + "For maintainence use only you can login with username 'admin' "
-            + "and password 'admin' this will allow you to see and use all the "
+            + "with this you can easily search and view different cars and customers. "
+            + "To use the app you will need to login with correct credentials, "
+            + "for maintainence use only you can login with username 'admin' "
+            + "and password 'admin', this will allow you to see and use all the "
             + "functionality of the app. When you login you will be taken to a menu "
-            + "where you will be able to chose what you would like to search for. "
-            + "when on a search page you will be able to see a list of cars, "
+            + "where you will be able to choose what you would like to search for. "
+            + "When on a search page you will be able to see a list of cars, "
             + "customers or employees that you can search through. "
-            + "to use the search simply enter a few letter (or words) that you "
-            + "want to search for. Whenever you can see any results on on the page, "
+            + "To use the search simply enter a few letters (or words) that you "
+            + "want to search for. Whenever you can see any results on the page, "
             + "you can click on one and click the view button to show all its details.");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    // methed that clears the login fields, called after logging out
+    // method that clears the login fields, called after logging out
     public void clearLoginFields(){
+        // set the texts to empty strings
         passwordField.setText("");
         usernameField.setText("");
+        // mark the form as not done
         done = false;
     }
 

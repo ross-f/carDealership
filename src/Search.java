@@ -17,6 +17,7 @@ public class Search extends javax.swing.JPanel {
     // Made public as it's pulled out in the event listeners to build the View class
     public SearchableObject selected;
 
+    // Constructs the search JPanel can be constucted with anything that extends searchable object
     public Search(ArrayList<? extends SearchableObject> objectToSearch) {
         resultsList = new AbstractListModel<String>() {
             @Override
@@ -31,6 +32,7 @@ public class Search extends javax.swing.JPanel {
         };
 
         this.objectToSearch = objectToSearch;
+        // Netbeans code to make the inital components
         initComponents();
     }
 
@@ -145,13 +147,20 @@ public class Search extends javax.swing.JPanel {
         String searchText = SearchField.getText().toLowerCase();
 
         // Filter the list of objects to find one that contains the searchText
+        // results is where the data will be stored after it's been filtered
         results = objectToSearch
+                // convert the list of objects to a stream so we can filter them
                 .stream()
+                // here i is each instance of the object in the stream
+                // remove all of the records that don't match the critera
+                // The critea being that the name attribute must contain the search text
                 .filter((i) -> i.name.toLowerCase().contains(searchText))
+                // collect the result of this stream to a new arraylist
+                // so that it can be converted to an abstract list again
                 .collect(Collectors.toCollection(ArrayList::new));
 
 
-        // Set the results list
+        // Set the results list by overriding the abstract list methods
         resultsList = new AbstractListModel<String>() {
             @Override
             public int getSize() {
