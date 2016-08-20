@@ -228,6 +228,8 @@ public class Login extends javax.swing.JPanel {
         // set the texts to empty strings
         passwordField.setText("");
         usernameField.setText("");
+        // empty the error message
+        message.setText("");
         // mark the form as not done
         done = false;
     }
