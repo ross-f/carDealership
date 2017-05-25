@@ -20,5 +20,5 @@ public class SearchableObject {
 // This enum means we can put lables on objects
 // This makes casting this class back to its subclass super easy
 enum Type {
-    CAR,EMPLOYEE,CUSTOMER
+    Computer,EMPLOYEE,CUSTOMER
 }

@@ -1,20 +1,20 @@
 /**
- * Class Car is Searchable
+ * Class Computer is Searchable
  * this means the class can be used by the Search class to search through an
  * ArrayList of objects
  */
-class Car extends SearchableObject {
+public class Computer extends SearchableObject {
     private String make, reg, colour, model;
     private double price;
     private double numberOfMiles;
 
     // Constructor to allow new objects to be made quickly
-    Car(String make, String model, String colour, String reg,
+    Computer(String make, String model, String colour, String reg,
                double price, double numberOfMiles) {
         // Call the searchable object class
         // Construct the name attribute as the make and the model
-        // Also constuct the type as CAR
-        super(make + " " + model, Type.CAR);
+        // Also construct the type as Computer
+        super(make + " " + model, Type.Computer);
         this.make = make;
         this.reg = reg;
         this.colour = colour;
@@ -23,7 +23,7 @@ class Car extends SearchableObject {
         this.numberOfMiles = numberOfMiles;
     }
 
-    // Code below is getters for the car object this will get the data from all the private attributes
+    // Code below is getters for the Computer object this will get the data from all the private attributes
     String getMake() {
         return make;
     }

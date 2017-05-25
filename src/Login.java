@@ -1,6 +1,20 @@
+import javax.swing.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
+class LoginDetails {
+    String username;
+    String password;
+
+    public LoginDetails(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+}
 /**
  * Login extends JPanel
  *
@@ -9,18 +23,45 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JPanel {
     // ArrayList is marked as final because it is never changed
-    private final ArrayList<Employee> employees;
     private String username, password;
     boolean done = false;
+    ArrayList<LoginDetails> employees;
 
     /**
      * Creates new form Login, this is based of Netbeans GUI and contains
      * generated code that cannot be commented or it will be regenerated.
-     * @param employees An array list of employees that it will use to validate
+     * @param userFileName A file containing user data
      * the usernames
      */
-    Login(ArrayList<Employee> employees) {
-        this.employees = employees;
+    Login(String userFileName) {
+        // read the user name and passwords from a file
+
+        /*
+            Format
+
+            user pass
+            user2 pass123
+         */
+        File userFile = new File(userFileName);
+
+        employees = new ArrayList<>();
+
+        try {
+            Scanner fileScanner = new Scanner(new FileInputStream(userFile));
+
+            // move each line of the file into the array
+            while (fileScanner.hasNext()) {
+                employees.add(new LoginDetails(fileScanner.next(), fileScanner.next()));
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+
+            System.exit(1);
+        } catch (NoSuchElementException e) {
+            System.err.println("File is in wrong format");
+            System.exit(1);
+        }
+
         // Call the method that will construct the components of the UI
         initComponents();
     }
@@ -48,7 +89,7 @@ public class Login extends javax.swing.JPanel {
         jLabel2.setText("User ID");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Welcome to the car dealership ");
+        jLabel1.setText("Welcome to the Computer dealership ");
 
         usernameField.setMinimumSize(new java.awt.Dimension(70, 21));
         usernameField.setName(""); // NOI18N
@@ -167,13 +208,13 @@ public class Login extends javax.swing.JPanel {
 
         // Filter out the employee records to find the entered username
         // This is where the employee will be stored when it is found
-        Employee matchedEmployee =
+        LoginDetails matchedEmployee =
           // convert the employees to a stream so it can be filtered
           employees.stream()
             // here `e` is each instance of an employee in the stream
             // remove all of the records that don't match the critera
             // The critea being that the entered username must match the one on the employee
-            .filter(e -> e.getUserName().equalsIgnoreCase(username))
+            .filter(e -> e.username.equalsIgnoreCase(username))
             // now the stream should only contain the ones with the entered username
             // Pull the entire employee object out of the first in the stream
             // store that in the matched employee variable
@@ -184,7 +225,7 @@ public class Login extends javax.swing.JPanel {
         // set found username - as filter alows partial matches
         try {
             // this will get a NullPointerException if there were no matches
-            username = matchedEmployee.getUserName();
+            username = matchedEmployee.username;
         } catch (NullPointerException e){
             // Show a warning if no username matches
             showWarning();
@@ -196,7 +237,7 @@ public class Login extends javax.swing.JPanel {
         // the done variable wants to be true if the the employees password equals the entered pass
         // so we can just call the method an put the output straight into done
         // if password matches then set the status to done
-        done = matchedEmployee.getPassword().equals(password);
+        done = matchedEmployee.password.equals(password);
         // if password doesn't match then show a warning
         if(!done) showWarning();
     }//GEN-LAST:event_loginActionPerformed
@@ -209,14 +250,14 @@ public class Login extends javax.swing.JPanel {
 
     // If help button pressed then show the help modal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(this, "This is the car dealership app "
-            + "with this you can easily search and view different cars and customers.\n "
+        JOptionPane.showMessageDialog(this, "This is the Computer dealership app "
+            + "with this you can easily search and view different Computers and customers.\n "
             + "To use the app you will need to login with correct credentials, "
             + "for maintainence use only you can login with username 'admin'\n "
             + "and password 'admin', this will allow you to see and use all the "
             + "functionality of the app. When you login you will be taken to a menu\n "
             + "where you will be able to choose what you would like to search for. "
-            + "When on a search page you will be able to see a list of cars,\n "
+            + "When on a search page you will be able to see a list of Computers,\n "
             + "customers or employees that you can search through. "
             + "To use the search simply enter a few letters (or words) that you\n "
             + "want to search for. Whenever you can see any results on the page, "

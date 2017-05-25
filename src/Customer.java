@@ -6,15 +6,15 @@
  */
 public class Customer extends SearchableObject {
     private String firstName, lastName;
-    private String favouriteCarMake;
+    private String favouriteComputerMake;
 
     // constuctor for a customer sets all of the attributes on a customer
-    public Customer(String firstName, String lastName, String favouriteCarMake) {
+    public Customer(String firstName, String lastName, String favouriteComputerMake) {
         // Constuct the searchable object with firstName + lastName as the name and customer as the type
         super(firstName + " " + lastName, Type.CUSTOMER);
         this.firstName = firstName;
         this.lastName = lastName;
-        this.favouriteCarMake = favouriteCarMake;
+        this.favouriteComputerMake = favouriteComputerMake;
     }
 
     // code below are the getters for all of the attributes on the customer object
@@ -26,7 +26,7 @@ public class Customer extends SearchableObject {
         return lastName;
     }
 
-    public String getFavouriteCarMake() {
-        return favouriteCarMake;
+    public String getFavouriteComputerMake() {
+        return favouriteComputerMake;
     }
 }

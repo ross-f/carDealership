@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ClassDiagram name="cardealership">
+<ClassDiagram name="Computerdealership">
   <ClassDiagramComponents>
-    <Class name="Car" package="" visibility="public" xPosition="7.0" yPosition="79.0">
+    <Class name="Computer" package="" visibility="public" xPosition="7.0" yPosition="79.0">
       <Fields>
         <Field name="make" type="String" visibility="private"/>
         <Field name="price" type="double" visibility="private"/>
@@ -41,14 +41,14 @@
         <Method name="isSold" returnType="Date" visibility="package"/>
       </Methods>
     </Class>
-    <Class name="CarDealership" package="" visibility="public" xPosition="1786.0" yPosition="699.0">
+    <Class name="ComputerDealership" package="" visibility="public" xPosition="1786.0" yPosition="699.0">
       <Fields>
         <Field name="frame" type="JFrame" visibility="package"/>
         <Field name="app" type="Container" visibility="package"/>
-        <Field name="cl" type="CardLayout" visibility="package"/>
+        <Field name="cl" type="ComputerdLayout" visibility="package"/>
         <Field name="login" type="Login" visibility="package"/>
         <Field name="menu" type="Menu" visibility="package"/>
-        <Field name="carSearch" type="Search" visibility="package"/>
+        <Field name="ComputerSearch" type="Search" visibility="package"/>
         <Field name="employeeSearch" type="Search" visibility="package"/>
         <Field name="customerSearch" type="Search" visibility="package"/>
       </Fields>
@@ -68,14 +68,14 @@
       <Fields>
         <Field name="firstName" type="String" visibility="private"/>
         <Field name="dateOfBirth" type="Date" visibility="private"/>
-        <Field name="favouriteCarMake" type="String" visibility="private"/>
+        <Field name="favouriteComputerMake" type="String" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public">
           <Argument type="String" name="firstName"/>
           <Argument type="String" name="lastName"/>
           <Argument type="Date" name="dateOfBirth"/>
-          <Argument type="String" name="favouriteCarMake"/>
+          <Argument type="String" name="favouriteComputerMake"/>
         </Constructor>
       </Constructors>
       <Methods>
@@ -91,9 +91,9 @@
         <Method name="setDateOfBirth" returnType="void" visibility="public">
           <Argument type="Date" name="dateOfBirth"/>
         </Method>
-        <Method name="getFavouriteCarMake" returnType="String" visibility="public"/>
-        <Method name="setFavouriteCarMake" returnType="void" visibility="public">
-          <Argument type="String" name="favouriteCarMake"/>
+        <Method name="getFavouriteComputerMake" returnType="String" visibility="public"/>
+        <Method name="setFavouriteComputerMake" returnType="void" visibility="public">
+          <Argument type="String" name="favouriteComputerMake"/>
         </Method>
       </Methods>
     </Class>
@@ -181,7 +181,7 @@
       <Fields>
         <Field name="employees" type="ArrayList&lt;Employee&gt;" visibility="package"/>
         <Field name="currentUser" type="String" visibility="package"/>
-        <Field name="cars" type="javax.swing.JButton" visibility="public"/>
+        <Field name="Computers" type="javax.swing.JButton" visibility="public"/>
         <Field name="customers" type="javax.swing.JButton" visibility="public"/>
         <Field name="exit" type="javax.swing.JButton" visibility="public"/>
         <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
@@ -195,7 +195,7 @@
       </Constructors>
       <Methods>
         <Method name="initComponents" returnType="void" visibility="private"/>
-        <Method name="carsActionPerformed" returnType="void" visibility="private">
+        <Method name="ComputersActionPerformed" returnType="void" visibility="private">
           <Argument type="java.awt.event.ActionEvent" name="evt"/>
         </Method>
         <Method name="customersActionPerformed" returnType="void" visibility="private">
@@ -293,27 +293,27 @@
     </Class>
     <Enum name="Type" package="" visibility="public" xPosition="798.0" yPosition="41.0">
       <Literals>
-        <Literal name="CAR"/>
+        <Literal name="Computer"/>
         <Literal name="EMPLOYEE"/>
         <Literal name="CUSTOMER"/>
       </Literals>
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="selected" source="Search" target="SearchableObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="selected" source="Search" target="SearchableObject" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="1..1"/>
     <IsRelation name="is" source="Customer" target="SearchableObject"/>
-    <HasRelation name="menu" source="CarDealership" target="Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="Car" target="SearchableObject"/>
-    <HasRelation name="employees" source="Menu" target="Employee" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Employee&gt;"/>
-    <HasRelation name="type" source="SearchableObject" target="Type" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="objectToSearch" source="Search" target="SearchableObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;? extends SearchableObject&gt;"/>
+    <HasRelation name="menu" source="ComputerDealership" target="Menu" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="1..1"/>
+    <IsRelation name="is" source="Computer" target="SearchableObject"/>
+    <HasRelation name="employees" source="Menu" target="Employee" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="0..*" collectionType="ArrayList&lt;Employee&gt;"/>
+    <HasRelation name="type" source="SearchableObject" target="Type" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="1..1"/>
+    <HasRelation name="objectToSearch" source="Search" target="SearchableObject" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="0..*" collectionType="ArrayList&lt;? extends SearchableObject&gt;"/>
     <IsRelation name="is" source="Employee" target="SearchableObject"/>
-    <HasRelation name="login" source="CarDealership" target="Login" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="objectToShow" source="View" target="SearchableObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="results" source="Search" target="SearchableObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;? extends SearchableObject&gt;"/>
-    <HasRelation name="employeeSearch" source="CarDealership" target="Search" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="customerSearch" source="CarDealership" target="Search" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="employees" source="Login" target="Employee" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Employee&gt;"/>
-    <HasRelation name="carSearch" source="CarDealership" target="Search" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="login" source="ComputerDealership" target="Login" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="1..1"/>
+    <HasRelation name="objectToShow" source="View" target="SearchableObject" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="1..1"/>
+    <HasRelation name="results" source="Search" target="SearchableObject" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="0..*" collectionType="ArrayList&lt;? extends SearchableObject&gt;"/>
+    <HasRelation name="employeeSearch" source="ComputerDealership" target="Search" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="1..1"/>
+    <HasRelation name="customerSearch" source="ComputerDealership" target="Search" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="1..1"/>
+    <HasRelation name="employees" source="Login" target="Employee" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="0..*" collectionType="ArrayList&lt;Employee&gt;"/>
+    <HasRelation name="ComputerSearch" source="ComputerDealership" target="Search" type="Aggregation" sourceComputerdinality="1..1" targetComputerdinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

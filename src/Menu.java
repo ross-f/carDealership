@@ -14,17 +14,17 @@ public class Menu extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        cars = new javax.swing.JButton();
+        Computers = new javax.swing.JButton();
         customers = new javax.swing.JButton();
         staff = new javax.swing.JButton();
         exit = new javax.swing.JButton();
 
-        jLabel1.setText("Car Dealership");
+        jLabel1.setText("Computer Dealership");
 
-        cars.setText("Search Cars");
-        cars.addActionListener(new java.awt.event.ActionListener() {
+        Computers.setText("Search Computers");
+        Computers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carsActionPerformed(evt);
+                ComputersActionPerformed(evt);
             }
         });
 
@@ -66,7 +66,7 @@ public class Menu extends javax.swing.JPanel {
                         .addComponent(exit)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cars)
+                        .addComponent(Computers)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addComponent(customers)))
                 .addGap(63, 63, 63))
@@ -78,7 +78,7 @@ public class Menu extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cars)
+                    .addComponent(Computers)
                     .addComponent(customers))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -88,8 +88,8 @@ public class Menu extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void carsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carsActionPerformed
-    }//GEN-LAST:event_carsActionPerformed
+    private void ComputersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComputersActionPerformed
+    }//GEN-LAST:event_ComputersActionPerformed
 
     private void customersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customersActionPerformed
     }//GEN-LAST:event_customersActionPerformed
@@ -101,7 +101,7 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_exitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton cars;
+    public javax.swing.JButton Computers;
     public javax.swing.JButton customers;
     public javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;

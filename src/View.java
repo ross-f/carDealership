@@ -12,16 +12,16 @@ public class View extends javax.swing.JPanel {
         this.objectToShow = objectToShow;
 
         switch(objectToShow.type.toString()){
-            case("CAR"):{
-                Car car = (Car) objectToShow;
+            case("Computer"):{
+                Computer Computer = (Computer) objectToShow;
 
                 show = String.format(
                         "%s %s %s \n"
                         + "Number of miles: %s\n"
                         + "Registraton: %s\n"
                         + "Price: £%s",
-                        car.getColour(), car.getMake(), car.getModel(),
-                        car.getNumberOfMiles(), car.getReg(), car.getPrice());
+                        Computer.getColour(), Computer.getMake(), Computer.getModel(),
+                        Computer.getNumberOfMiles(), Computer.getReg(), Computer.getPrice());
 
                 break;
             }
@@ -48,9 +48,9 @@ public class View extends javax.swing.JPanel {
 
                 show = String.format(
                         "%s %s \n"
-                        + "Favourite car make: %s \n",
+                        + "Favourite Computer make: %s \n",
                         customer.getFirstName(), customer.getLastName(),
-                        customer.getFavouriteCarMake()
+                        customer.getFavouriteComputerMake()
                 );
 
                 break;

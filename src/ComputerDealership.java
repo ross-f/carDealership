@@ -1,36 +1,33 @@
-import java.awt.CardLayout;
-import java.awt.Component;
-import java.awt.Container;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 /**
  * This is the main class this contains the main() method
  * the data is created in this class and the base components of the UI are constructed
  *
- * CarDealership implements ActionListener so that this class can manage all
+ * ComputerDealership implements ActionListener so that this class can manage all
  * of the actions in the other classes.
  */
 
-public class CarDealership implements ActionListener {
-    JFrame frame;
-    Container app;
-    CardLayout cl;
-    Login login;
-    Menu menu;
-    Search carSearch;
-    Search employeeSearch;
-    Search customerSearch;
+public class ComputerDealership implements ActionListener {
+    private JFrame frame;
+    private Container app;
+    private CardLayout cl;
+    private Login login;
+    private Menu menu;
+    private Search ComputerSearch;
+    private Search employeeSearch;
+    private Search customerSearch;
 
-    CarDealership() {
+    private ComputerDealership() {
         /**
          * This is where the initial data for the app is created
          *
-         * This is completely flexable and new objects can be added here
-         * and they will apprear in the searches and employees can be used to login
+         * This is completely flexible and new objects can be added here
+         * and they will appear in the searches and employees can be used to login
          *
          * Each ArrayList has field names inline.
          */
@@ -118,7 +115,7 @@ public class CarDealership implements ActionListener {
         employees.add(new Employee("David", "Butler", "example", "genuser72", "password72", 72));
         employees.add(new Employee("John", "Green", "example", "genuser73", "password73", 73));
         employees.add(new Employee("Ann", "Taylor", "example", "genuser74", "password74", 74));
-        employees.add(new Employee("Lois", "Carter", "example", "genuser75", "password75", 75));
+        employees.add(new Employee("Lois", "Computerter", "example", "genuser75", "password75", 75));
         employees.add(new Employee("Sara", "Allen", "example", "genuser76", "password76", 76));
         employees.add(new Employee("Martha", "Roberts", "example", "genuser77", "password77", 77));
         employees.add(new Employee("Bonnie", "Russell", "example", "genuser78", "password78", 78));
@@ -145,28 +142,28 @@ public class CarDealership implements ActionListener {
         employees.add(new Employee("Russell", "Nelson", "example", "genuser99", "password99", 99));
         employees.add(new Employee("Marilyn", "Monroe", "example", "genuser100", "password100", 100));
 
-        // create the array list that the cars will be stored in
-        ArrayList<Car> cars = new ArrayList<>();
-        // create the new cars in the following format
-        //       new Car(make, model, colour, registration, miles, price
-        cars.add(new Car("Nissan", "Micra", "Red", "AB12 CDE", 100000000, 1));
-        cars.add(new Car("Porshe", "Boxer", "Yellow", "AA12 CDE", 10, 1000000000));
-        cars.add(new Car("Audi", "A2", "Silver", "CD12 CDE", 0, 100000));
+        // create the array list that the Computers will be stored in
+        ArrayList<Computer> Computers = new ArrayList<>();
+        // create the new Computers in the following format
+        //       new Computer(make, model, colour, registration, miles, price
+        Computers.add(new Computer("Nissan", "Micra", "Red", "AB12 CDE", 100000000, 1));
+        Computers.add(new Computer("Porshe", "Boxer", "Yellow", "AA12 CDE", 10, 1000000000));
+        Computers.add(new Computer("Audi", "A2", "Silver", "CD12 CDE", 0, 100000));
 
         // Create the array list that the customers will be stored in
         ArrayList<Customer> customers = new ArrayList<>();
         // populate the ArrayList with new customers in the following format
-        //            new Customer(firstName, lastName, Date of Birth, Fave car brand
+        //            new Customer(firstName, lastName, Date of Birth, Fave Computer brand
         // 100 CUSTOMERS GENERATED FROM http://random-name-generator.info/
-        // WITH CARS FROM https://en.wikipedia.org/wiki/List_of_automobile_manufacturers
+        // WITH ComputerS FROM https://en.wikipedia.org/wiki/List_of_automobile_manufacturers
         customers.add(new Customer("Evelyn", "Brooks", "Ranger"));
-        customers.add(new Customer("Kathryn", "Peterson", "Autocars"));
+        customers.add(new Customer("Kathryn", "Peterson", "AutoComputers"));
         customers.add(new Customer("Henry", "Foster", "SAIPA"));
         customers.add(new Customer("Joan", "Taylor", "Asia"));
-        customers.add(new Customer("Shirley", "Scott", "Ascari"));
+        customers.add(new Customer("Shirley", "Scott", "AsComputeri"));
         customers.add(new Customer("Donald", "Jones", "Volkswagen"));
         customers.add(new Customer("Edward", "Barnes", "Sao"));
-        customers.add(new Customer("Johnny", "Brown", "Wallyscar"));
+        customers.add(new Customer("Johnny", "Brown", "WallysComputer"));
         customers.add(new Customer("Ruby", "Gonzales", "VAM"));
         customers.add(new Customer("Samuel", "Bennett", "Hispano-Argentina"));
         customers.add(new Customer("Ruth", "Hill", "Australian Six"));
@@ -183,10 +180,10 @@ public class CarDealership implements ActionListener {
         customers.add(new Customer("Tammy", "Morgan", "GMC"));
         customers.add(new Customer("Eric", "Bryant", "Enfield"));
         customers.add(new Customer("Marie", "Patterson", "Everson"));
-        customers.add(new Customer("Ernest", "Carter", "Aston Martin Lagonda"));
+        customers.add(new Customer("Ernest", "Computerter", "Aston Martin Lagonda"));
         customers.add(new Customer("Scott", "Moore", "Daewoo"));
         customers.add(new Customer("Arthur", "Griffin", "Dina"));
-        customers.add(new Customer("Carol", "Rogers", "Hindustan"));
+        customers.add(new Customer("Computerol", "Rogers", "Hindustan"));
         customers.add(new Customer("Harry", "Butler", "Siam di Tella"));
         customers.add(new Customer("Joshua", "Henderson", "Opel"));
         customers.add(new Customer("Frances", "Jackson", "Tesla Motors"));
@@ -194,7 +191,7 @@ public class CarDealership implements ActionListener {
         customers.add(new Customer("Stephen", "Ross", "Steel Brothers"));
         customers.add(new Customer("Mary", "Bailey", "Yugo"));
         customers.add(new Customer("Jeremy", "Lewis", "IMCL"));
-        customers.add(new Customer("Todd", "Simmons", "Carlton"));
+        customers.add(new Customer("Todd", "Simmons", "Computerlton"));
         customers.add(new Customer("Justin", "Watson", "Mobius Motors"));
         customers.add(new Customer("Gloria", "Thompson", "Zastava"));
         customers.add(new Customer("Diana", "Coleman", "Monarch"));
@@ -207,11 +204,11 @@ public class CarDealership implements ActionListener {
         customers.add(new Customer("Bobby", "Anderson", "Optimal Energy"));
         customers.add(new Customer("Joseph", "Campbell", "David Brown"));
         customers.add(new Customer("Teresa", "Diaz", "Perana"));
-        customers.add(new Customer("Carlos", "Robinson", "Styl Kar"));
+        customers.add(new Customer("Computerlos", "Robinson", "Styl Kar"));
         customers.add(new Customer("Mildred", "Cox", "Timmis"));
         customers.add(new Customer("Anna", "Flores", "Theologou"));
         customers.add(new Customer("Craig", "Powell", "Hercules"));
-        customers.add(new Customer("Carl", "King", "Mazda"));
+        customers.add(new Customer("Computerl", "King", "Mazda"));
         customers.add(new Customer("Susan", "Mitchell", "Chrysler"));
         customers.add(new Customer("Amy", "Nelson", "Cadillac"));
         customers.add(new Customer("Sarah", "Russell", "Toroidion"));
@@ -251,7 +248,7 @@ public class CarDealership implements ActionListener {
         customers.add(new Customer("Louis", "Perez", "Tangalakis"));
         customers.add(new Customer("Emily", "Washington", "Engesa"));
         customers.add(new Customer("Christine", "Edwards", "Uirapuru"));
-        customers.add(new Customer("William", "Walker", "Holland Car"));
+        customers.add(new Customer("William", "Walker", "Holland Computer"));
         customers.add(new Customer("Andrew", "Johnson", "MP Lafer"));
         customers.add(new Customer("Maria", "Ward", "Mirage GT"));
         customers.add(new Customer("Julie", "Green", "Tan Chong Motor"));
@@ -261,7 +258,7 @@ public class CarDealership implements ActionListener {
         customers.add(new Customer("Martha", "Collins", "Tudhope"));
 
         // Create the JFrame to hold the app
-        frame = new JFrame("CarSales");
+        frame = new JFrame("ComputerSales");
         // exit the java process when closing the GUI
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // set a size - can be anything over around 450 becuase of the frame packing later
@@ -270,38 +267,38 @@ public class CarDealership implements ActionListener {
         // get the content within the frame
         // -- this is because CardLayout requires the specific conent to focus on
         app = frame.getContentPane();
-        // create the Card layout to allow visible panels to be switched on the fly
+        // create the CardLayout layout to allow visible panels to be switched on the fly
         cl = new CardLayout();
 
         // Apply the new layout
         app.setLayout(cl);
 
-        // Contruct the diffent classes that hold the interchangeable panels
-        login = new Login(employees);
+        // Construct the different classes that hold the interchangeable panels
+        login = new Login("credlist.txt");
         menu = new Menu();
-        // The search class is constucted with different ArrayLists of objects
-        // each of the panels are constucted with differnt array lists
-        carSearch = new Search(cars);
+        // The search class is constructed with different ArrayLists of objects
+        // each of the panels are constructed with different array lists
+        ComputerSearch = new Search(Computers);
         employeeSearch = new Search(employees);
         customerSearch = new Search(customers);
 
-        // add the searches to the app container and give them lables
+        // add the searches to the app container and give them labels
         app.add(login, "login");
         app.add(menu, "menu");
-        app.add(carSearch, "car");
+        app.add(ComputerSearch, "Computer");
         app.add(employeeSearch, "employee");
         app.add(customerSearch, "customer");
 
-        // Add the carDealership action listener to each button
+        // Add the ComputerDealership action listener to each button
         login.login.addActionListener(this);
-        menu.cars.addActionListener(this);
+        menu.Computers.addActionListener(this);
         menu.customers.addActionListener(this);
         menu.staff.addActionListener(this);
         menu.exit.addActionListener(this);
-        carSearch.backToMenu.addActionListener(this);
+        ComputerSearch.backToMenu.addActionListener(this);
         employeeSearch.backToMenu.addActionListener(this);
         customerSearch.backToMenu.addActionListener(this);
-        carSearch.viewButton.addActionListener(this);
+        ComputerSearch.viewButton.addActionListener(this);
         employeeSearch.viewButton.addActionListener(this);
         customerSearch.viewButton.addActionListener(this);
 
@@ -317,7 +314,7 @@ public class CarDealership implements ActionListener {
         // This means that the app runs independantly instead of off the back of the static main
         SwingUtilities.invokeLater(() -> {
             // construct the current class - creating the starting frame
-            CarDealership startFrame = new CarDealership();
+            ComputerDealership startFrame = new ComputerDealership();
         });
     }
 
@@ -338,26 +335,26 @@ public class CarDealership implements ActionListener {
         switch(ae.getActionCommand()){
             // Compare that name to each case statement
             case("Login"):{
-                // If login succesful then switch the panel cards to the menu
+                // If login successful then switch the panel Cards to the menu
                 // reason for the "feature" of having to click Login twice
                 if (login.done)
                     cl.show(app, "menu");
                 break;
             }
 
-            // if search cars clicked swich panels to the Car Search
-            case("Search Cars"):{
-                cl.show(app, "car");
+            // if search Computers clicked switch panels to the Computer Search
+            case("Search Computers"):{
+                cl.show(app, "Computer");
                 break;
             }
 
-            // if search staff clicked swich panels to the Staff Search
+            // if search staff clicked switch panels to the Staff Search
             case("Search Staff"):{
                 cl.show(app, "employee");
                 break;
             }
 
-            // if search customers clicked swich panels to the Customer Search
+            // if search customers clicked switch panels to the Customer Search
             case("Search Customers"):{
                 cl.show(app, "customer");
                 break;
@@ -379,8 +376,8 @@ public class CarDealership implements ActionListener {
             }
 
             /**
-             * This case will take the user to the veiw screen for the currently
-             * selected object from anyone of the Car, Customer or Employee search
+             * This case will take the user to the view screen for the currently
+             * selected object from anyone of the Computer, Customer or Employee search
              * screens.
              *
              * It does this by first finding the currently shown Panel and then
@@ -388,31 +385,31 @@ public class CarDealership implements ActionListener {
              *
              */
             case("View"):{
-                // get active card by looping through layout and storeing what is visable
+                // get active card by looping through layout and storing what is viable
                 SearchableObject selected = null;
 
                 // a for each loop to loop though each component inside the main frame
                 for (Component comp: app.getComponents()) {
-                    // check if the current compoent in the loop is visable
+                    // check if the current component in the loop is visible
                     if (comp.isVisible()) {
                         // The view button is only found on the search page
                         // And this case would get run if the view button is clicked
-                        // which means the visable component must be a search panel.
+                        // which means the visible component must be a search panel.
 
                         // Here the component is casted to a search panel so we can
                         // use it as if it was a search panel all along
                         Search searchPanel = (Search) comp;
-                        // pull out the attribute that is stored as slected on the search
+                        // pull out the attribute that is stored as selected on the search
                         // page and store it in the selected variable to use it on for view
                         selected = searchPanel.selected;
                     }
                 }
 
-                // genrerate the view panel using the selected attribute
+                // generate the view panel using the selected attribute
                 View viewPanel = new View(selected);
                 // Add the new view panel to the jframe
                 app.add(viewPanel, "view");
-                // Switch to it on the card layout
+                // Switch to it on the Card layout
                 cl.show(app, "view");
                 // add an actionlistener to go back to the menu
                 viewPanel.backToMenu.addActionListener(this);
@@ -420,8 +417,8 @@ public class CarDealership implements ActionListener {
                 break;
             }
 
-            // This is for debugging puroses only, will throw an usuported exception if code
-            // has been writen for action listener and it hasn't been written in the case switch
+            // This is for debugging purposes only, will throw an unsupported exception if code
+            // has been written for action listener and it hasn't been written in the case switch
             default:
                 throw new UnsupportedOperationException(
                         ae.getActionCommand() + " has not been implemented yet");

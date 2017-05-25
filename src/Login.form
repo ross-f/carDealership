@@ -110,7 +110,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Welcome to the car dealership "/>
+            <Property name="text" type="java.lang.String" value="Welcome to the Computer dealership "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="usernameField">
